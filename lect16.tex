@@ -1,0 +1,66 @@
+\paragraph{Example}
+$$\sum \frac{1}{1+x} = 1-x+x^2-x^3+\dots = \sum_{n=0}^\infty (-1)^nx^n$$
+$$\log \left(1+x\right) = \int \frac{dx}{1+x}= x-\frac{1}{2}x^2+\frac{1}{3}x^3-\dots = \sum_{n=1}^\infty \left(-1\right)^{n+1}\frac{1}{n}x^n$$
+New series converge for 1 too (old diverges):
+$$\ln 2 = \sum_{n=1}^\infty \left(-1\right)^{n+1}\frac{1}{n}$$
+\paragraph{Example}
+$$\sum \frac{1}{1+x^2} = \sum_{n=0}^\infty (-1)^nx^{2n}$$
+$$\arctan x= \int \frac{dx}{1+x^2}= \sum_{n=0}^\infty \frac{\left(-1\right)^{n} x^{2n+1}}{2n+1} = x - \frac{x^3}{3}+\frac{x^5}{5} - \dots$$
+New series converge for both -1 and 1 too (old diverges):
+$$\frac{\pi}{4} = \arctan 1 = 1 - \frac{1}{3}+\frac{1}{5}-\dots$$
+
+\section{Multivariable function}
+$$f(x_1,x_2,\dots, x_n)$$
+$$\mathbb{R}^n = \left\{ x=\left(x_1,x_2,\dots x_n\right): x_i \in \mathbb{R} \right\}$$
+\paragraph{Norm in $\mathbb{R}$}
+\begin{enumerate}
+	\item $$\forall x\in \mathbb{R} \: \norm{x} \geq 0$$ $$x=0 \iff \norm{x} = 0$$
+	\item $$\norm{cx} = c\norm{x}$$
+	\item $$\norm{x+y} \leq \norm{x}+\norm{y}$$
+\end{enumerate}
+\paragraph{Example}
+$$\norm{x} =\norm{x}_2 = \sqrt{x_1^2+x_2^2+\dots+x_n^2}$$
+$$\norm{x}_{\infty} = \max\limits_i \left|x_i\right|$$
+\paragraph{Metric}
+We can define metric("distance") given the norm:
+$$d(x,y) = \norm{x-y}$$
+Properties:
+\begin{enumerate}
+	\item $$d(x,y)\geq 0$$
+	$$d(x,y) = 0 \iff x=y$$
+	\item $$d(x,y) = d(y,x)$$
+	\item $$d(x,y) + d(y,z) \geq d(x,z)$$
+\end{enumerate}
+Denote $d=d_2$. Note that
+$$d_\infty \leq d_2 \leq \sqrt{n} d_\infty$$
+Denote $$B(x, R) = \left\{ y: d(x,y) < R \right\}$$ 
+$$B_\infty(x, R) = \left\{ y: d_\infty(x,y) < R \right\}$$
+which are ball and box around (cube) around $x$.
+Form lemma
+$$B_\infty(x,R) \subseteq B(x, \sqrt{n}R) \subseteq  B_\infty(x, \sqrt{n}R) $$
+\subsection{Sequences}
+Denote
+$$\left\{ x^k \right\} = \left\{ \underbrace{x^1}_{\in \mathbb{R}^n},\underbrace{x^2}_{\in \mathbb{R}^n},\underbrace{x^3}_{\in \mathbb{R}^n},\dots \right\}$$
+$$x^k = \left( \underbrace{x_1^k}_{\in \mathbb{R}^n}, \underbrace{x_2^k}_{\in \mathbb{R}^n}, \dots, \underbrace{x_n^k}_{\in \mathbb{R}^n}\right)$$
+\paragraph{Definition}
+For sequence $\left\{ x^k \right\}_{k=1}^\infty$ in $\mathbb{R}^n$ we say that sequence convrges to $x$ $\iff$ $d_\infty(x^k,x) \to 0$.
+\paragraph{Lemma}
+$$x^k \to x \iff x_i^k \to x_i$$
+\subparagraph{Proof}
+$$x^k \to x \iff d_\infty(x^k,x) \to 0 \iff  \max\limits_i \left|x^k_i - x_i\right| \to 0 \iff \forall i \left|x^k_i - x_i\right| \to 0 $$  
+\paragraph{Definition}
+Set $S \subseteq \mathbb{R}^N$ is called bounded if $$\exists x,r \: S \subseteq B(x,r) \iff exists x,r \: S \subseteq B_\infty(x,r)$$
+\paragraph{Lemma} Each converging sequence is bounded.
+\paragraph{Bolzano–Weierstrass theorem} Each bounded sequence has converging sequence.
+\subparagraph{Proof}
+$$\left\{ x^k \right\} \subseteq B_\infty (0,R) \Rightarrow \forall i,k |x^k_i| < R$$
+ $\left\{ x_1^k \right\}_{k=1}^\infty \subseteq \mathbb{R}$ is bounded, i.e. we can extract from it converging subsequence $\left\{ x^{k_m}_1 \to x \right\}$.Continuing with next dimensions, we each time extract subsequence of$x^{k_m}_i$ which converges and pass it to next dimension, until we are finished.
+ \paragraph{Definition}
+ $\left\{  x^k \right\}_{k=1}^\infty \subseteq \mathbb{R}^n$ is called Cauchy sequence if 
+ $$\forall \epsilon> 0 \exists N \forall l,m > N \: d(x^l, x^m) < \epsilon \iff d_\infty(x^l, x^m) < \epsilon$$
+ \paragraph{Sentence} Cauchy sequence $\iff$ converging sequence.
+ \subsection{Subsets of $\mathbb{R}^n$}
+ \paragraph{Open set}
+ $S$ is open if $\forall x \in S \exists \epsilon > 0 \: B(x,\epsilon) \subseteq S$.
+ 
+ For arbitrary $S$ if $x \in S \exists \epsilon > 0 \: B(x,\epsilon) \subseteq S$ we say that $x$ is interior point of $S$.

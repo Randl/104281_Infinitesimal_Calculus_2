@@ -1,0 +1,98 @@
+\paragraph{Sentence}
+??
+
+If series $\sum a_n$ converges absolutely, then after rearrangement  of its elements it will converge to the same sum.
+\subparagraph{Proof}
+Suppose $\sum a_n$ converges conditionally ($\sum |a_n| = \infty$). Take look at $\sum a_n^+$ and $\sum a_n^-$.
+$$\sum a_n^+ = \sum (a_n + a_n^-)$$
+If $\sum a_n^-$ converges, then $\sum(a_n+a_n^-)$ converges, meaning $a_n^+$ converges. But $\sum a_n^+ + \sum a_n^- = \sum |a_n|$ which diverges.
+\paragraph{Example}
+$$\sum^\infty \frac{(-1)^{n+1}}{n}$$
+The series converges  conditionally.
+$$\sum a_n^+ = 1+\frac{1}{3} + \frac{1}{5} + \dots$$
+$$\sum a_n^- = \frac{1}{2} + \frac{1}{4} + \dots$$
+Since both series go to infinity we can rearrange elements to get any sum. For example, $\frac{3}{2}$:
+$$\underbrace{\underbrace{\underbrace{1+\frac{1}{3}+\frac{1}{5}}_{\frac{23}{15}>\frac{3}{2}}-\frac{1}{2}}_{<\frac{3}{2}}+\frac{1}{7}+\frac{1}{9}+\frac{1}{11}+\frac{1}{13}+\frac{1}{15}}_{1.52\dots>\frac{3}{2}}-\frac{1}{4}+\dots = \frac{3}{2}$$
+i.e. we are summing until we pass $\frac{3}{2}$ and then subtracting until we pass $\frac{3}{2}$ and so on. To proof that, lets add braces:
+$$\underbrace{\left(1+\frac{1}{3}+\frac{1}{5}\right)}_{A_1}-\underbrace{\left(\frac{1}{2}\right)}_{A_2}+\underbrace{\left(\frac{1}{7}+\frac{1}{9}+\frac{1}{11}+\frac{1}{13}+\frac{1}{15}\right)}_{A_3}-\underbrace{\left(\frac{1}{4}\right)}_{A_4}$$
+Since we stop as soon as we pass $\frac{3}{2}$, the sum is less tan last element far from $\frac{3}{2}$:
+$$\left|A_1-\frac{3}{2}\right|<\frac{1}{5}$$
+$$\left|A_1+A_2-\frac{3}{2}\right|<\frac{1}{2}$$
+$$\left|A_1+A_2+A_3-\frac{3}{2}\right|<\frac{1}{15}$$
+$$\left|\sum A-\frac{3}{2}\right| \to 0$$
+Meaning series converges to $\frac{3}{2}$.
+Series can also diverge;
+$$\underbrace{\underbrace{1+\frac{1}{3}}_{>1}-\frac{1}{2}+\frac{1}{5}+\frac{1}{7} + \dots + \frac{1}{41}}_{>2} - \frac{1}{4} + \dots$$
+i.e. we sum until we pass next natural number and then subtract on element.
+\paragraph{Riemann rearrangement theorem}  If an infinite series of real numbers is conditionally convergent, then its terms can be arranged in a permutation so that the new series converges to an arbitrary real number, or diverges.
+\subparagraph{Proof}
+Let's proof only for real $S$. We know that $\sum a_n^+, \sum a_n^- \to \infty$ and $a_n^+, a_n^- \to 0$.
+
+Let $n_1$ the least natural number such that $$a_1^++a_2^++\dots+a_{n_1}^+ > S$$
+$$a_1^++a_2^++\dots+a_{n_1-1}^+ \leq S \Rightarrow S < a_1^++a_2^++\dots+a_{n_1}^+ \leq S+a_{n_1}^+$$
+$$\left|S-A_1\right|\leq a_{n_1}^+$$
+Now let $m_1\geq 1$ the least number such that $$A_1 - \underbrace{\left(a_1^-+a_2^-+\dots+a_{m_1}^-\right)}_{A_2} < S$$
+$$A_1-A_2 < S \leq A_1 - A_2 + a_{m_1}^-$$
+$$\left|S-(A_1-A_2)\right|<a_{m_1}^-$$
+Let now continue building sequences
+$$0<n_1<n_2<\dots$$
+$$0<m_1<m_2<\dots$$
+Such that 
+$$A_{2k+1} = \sum_{n=n_k+1}^{n_{k+1}} a_n^+$$
+$$A_{2k} = \sum_{n=m_k+1}^{n_{m+1}} a_m^-$$
+$$\left|S - \sum_{k=1}^{l} \left(-1\right)^{k+1} A_k\right| <\begin{cases}
+a^+_{n_j} & l=2j-1\\a^-_{m_j} & l=2j\\
+\end{cases}$$
+Anyway
+$$\sum_{k=1}^\infty (-1)^{k+1} A_k = S$$
+This is series with rearrangement and adding braces, according to previous sentence that means that series without braces converges to the same thing.
+\subsection{Series multiplication}
+$$\left(\sum_{n=1}^N a_n\right)\left(\sum_{k=1}^K b_k\right) = \sum_{n,k: n \leq N k\leq K} a_nb_k$$
+\paragraph{Sentence}
+Let $\sum^{\infty} a_m = A$ and $\sum^\infty b_n = B$ absolutely convergent series. Let $\left\{c_k\right\}$ some arrangement of  $\left\{a_ib_j\right\}_{i,j}$. Then $\sum c_k$ absolutely converges to $AB$.
+\subparagraph{Proof}
+For all $k$ $c_k$ is element of form $a_ib_j$, so lets write $c_k = a_{i(k)}b_{j(k)}$. For any $i,j$ exists $k$ such that $i=i(k)$ and  $j= j(k)$. 
+Lets show that $\sum |c_k| \leq \infty$.
+
+Denote $S_n = \sum_{k=1}^n |c_k|$. Lets show that $\left\{S_n\right\}$ bounded, i.e.
+$$S_n \leq \left(\sum^\infty |a_n|\right)\left(\sum^\infty |b_n|\right) < \infty$$
+$$S_n = \sum_{k=1}^n |c_k| = \sum_{k=1}^n \left|a_{i(k)}b_{j(k)}\right|$$
+Denote $m = \max \left\{ i(k), j(k): 1\leq k\leq n \right\}$
+$$S_n = \sum_{k=1}^n |a_{i(k)}||b_{j(k)}| \leq \sum_{1\leq i,j \leq m} |a_i||b_j| = \sum_{i=1}^m |a_i| \sum_{j=1}^m |b_j| \leq \left(\sum^\infty |a_i| \right)\left(\sum^\infty |b_j| \right)$$
+
+That means $\left\{ S_n\right\}$ is bounded $\Rightarrow$ $\sum c_k$ converges. Now we can find sum by choosing the convenient arrangement.
+$$a_1b_1, \left(a_2b_1, a_2b_2, a_1b_2\right), \left(a_3b_1, a_3b_2, a_3b_3, a_2b_3, a_3b_3\right) \dots$$
+i.e. going for larger and larger squares. Denote partial sum of this series as $R_n$.
+$$R_1 = a_1b_1$$
+$$R_4 = a_1b_1+a_2b_1+a_2b_2+a_1b_2= (a_1+a_2)(b_1+b_2)$$
+$$R_9 = a_1b_1 + \dots + a_1b_3 = (a_1+a_2+a_3)(b_1+b_2+b_3)$$
+$$R_n \to \sum c_k \Rightarrow  R_{k^2} \stackrel{k \to \infty}{\to} \sum c_k$$
+$$R_{k^2} = \sum_{i=1}^k a_i \sum_{j=1}^k b_j \to AB$$
+\paragraph{Example}
+$$|q|<1$$
+$$\left(\sum_{n=0}^{\infty} q^n\right)\left(\sum_{n=0}^{\infty} q^n\right) = \frac{1}{\left(1-q\right)^2}$$
+absolutely converges
+$$\underbrace{q^0q^0}_{d_0} + \underbrace{q^0q^1+ q^1q^0}_{d_1}+ \underbrace{q^0q^2 + q^1q^1 + q^2q^0}_{d_2} + \dots = \sum d_n$$
+with increasing sum of powers, starting from 0.
+$$d_n = \sum_{k=0}^{n} q^k q^{n-k} = (n+1)q^n$$
+$$\sum_{n=0}^\infty (n+1)q^n = \frac{1}{(1-q)^2}$$
+
+\paragraph{Example}
+$$a_n =b_n = \frac{(-1)^{n+1}}{\sqrt{n}}$$ 
+$\frac{(-1)^{n+1}}{\sqrt{n}}$ converges conditionally. 
+$$\left\{a_ib_j\right\} = \left\{ \frac{(-1)^{i+1}}{\sqrt{i}} \frac{(-1)^{j+1}}{\sqrt{j}} \right\}$$
+Lets arrange 
+$$\underbrace{a_1b_1}_{d_1} + \underbrace{a_1b_2 + a_2b_1}_{d_2}  + \underbrace{a_1b_3 + a_2b_2 + a_3b_1}_{d_3} = \sum d_n $$
+When $$d_n = \sum_{k=1}^{n-1} a_kb_{n-k}$$
+$$d_n = \sum_{k=1}^{n-1} \frac{(-1)^{k+1}}{\sqrt{k}}\frac{(-1)^{n-k+1}}{\sqrt{n-k}} = (-1)^n\sum_{k=1}^{n-1} \frac{1}{\underbrace{\sqrt{k}}_{\leq \sqrt{n-1}}\underbrace{\sqrt{n-k}}_{\leq \sqrt{n-1}}} \geq (-1)^n \sum_1^n \frac{1}{n-1} = (-1)^n$$
+	$$1\leq |d_n| \not\to 0 $$
+	i.e. $d_n$ diverges.
+	
+\section{Sequences and series of functions}
+Let $\left\{ f_n(x) \right\}$ sequence of functions that are defined on the same domain.
+\paragraph{Definition} We say that $f_n \stackrel{pointwise}{\longrightarrow} f$ ($f$ defined on the same domain) if for al $x$ in domain $f_n(x) \to f(x)$.
+\paragraph{Example}
+On $[0,1]$ $f_n(x) = x^n$ 
+$$f(x) = \begin{cases}
+0 & 0 \leq x< 1\\1& x=1\\
+\end{cases}$$

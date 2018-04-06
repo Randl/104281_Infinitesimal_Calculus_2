@@ -1,0 +1,103 @@
+\subsection{Chain rule}
+$$f: \mathbb{R}^2 \to \mathbb{R}$$
+$$g: \mathbb{R} \to \mathbb{R}$$
+$$h: \mathbb{R} \to \mathbb{R}^2$$
+
+\paragraph{$g \circ f$} Suppose $f$ has partial derivatives and $g$ is differentiable:
+$$(g\circ f)(x,y) = g(f(,x,y))$$ 
+$$\frac{\partial}{\partial x} (g\circ f)(x,y) = g^\prime (f(x,y)) \frac{\partial x}{\partial y}(x,y)$$
+\paragraph{$f \circ h$} 
+$$h:[a,b]\to \mathbb{R}^2 \quad h(t) = \left(h_1(t), h_2(t)\right) = \left(x(t), y(t)\right)$$
+\subparagraph{Definition} Such $h$, if continuous (i.e. $h_i$ is continuous) is called track.
+
+Let $f$ differentiable on interval $D$ and $h$ - track in $D$ such that $x(t)$, $y(t)$ are differentiable. Denote $F(t) = f(x(t), y(t))$. Then $F$ is differentiable and 
+$$\frac{dF}{dt}= \frac{\partial f}{\partial x}(x(t), y(t)) \cdot \frac{dx}{dt}(t) + \frac{\partial f}{\partial y}(x(t), y(t)) \cdot \frac{dy}{dt}(t) = \nabla f \cdot h^\prime$$
+$$h^\prime (t) = \left(x^\prime(t), y^\prime(t)\right)$$
+\subparagraph{Proof}
+Let $t\in [a,b]$. Define 
+$$\Delta x = x\left(t+\Delta t\right) - x(t)$$ 
+$$\Delta y = y\left(t+\Delta t\right) - y(t)$$ 
+From continuousness and differentiability of $x$ and $y$;
+$$\Delta x, \Delta y \stackrel{\Delta t \to 0}{\to} 0$$
+$$\frac{\Delta x}{\Delta t} \stackrel{\Delta t \to 0}{\to} x^\prime(t)$$ 
+$$\frac{\Delta y}{\Delta t} \stackrel{\Delta t \to 0}{\to} y^\prime(t)$$ 
+From differentiability of $f$:
+\begin{align*}
+\Delta F = F(t+\Delta t) - F(t) = f(x(t)+\Delta x, y(t)+\Delta y) - f(x(t),y(t)) =\\= \frac{\partial f}{\partial x}(x(t), y(t)) \Delta x+\frac{\partial f}{\partial y}(x(t), y(t)) \Delta y + \alpha (\Delta x, \Delta y)\Delta x + \beta (\Delta x, Delta y)\Delta y\end{align*}
+$$\alpha (\Delta x, \Delta y) \stackrel{\Delta x, \Delta y \to 0}{\to} 0 \Rightarrow \alpha (\Delta x, \Delta y) \stackrel{\Delta t \to 0}{\to} 0$$
+$$\beta (\Delta x, \Delta y) \stackrel{\Delta x, \Delta y \to 0}{\to} 0 \Rightarrow \beta (\Delta x, \Delta y) \stackrel{\Delta t \to 0}{\to} 0$$
+$$\frac{\Delta F}{\Delta t} = \frac{\partial f}{\partial x} \cdot \frac{\Delta x}{\Delta t}+\frac{\partial f}{\partial y} \cdot \frac{\Delta y}{\Delta t} + \alpha (\Delta x, \Delta y)\frac{\Delta x}{\Delta t} + \beta (\Delta x, Delta y)\cdot \frac{\Delta y}{\Delta t}\stackrel{\Delta t \to 0}{\to} \frac{\partial f}{\partial x} \cdot x^\prime +\frac{\partial f}{\partial y} \cdot y^\prime $$
+\paragraph{Example}
+$h(t) = (e^t, \cos t)$ and $f(x,y) xy$.
+$$F(t) = e^t\cos^t$$
+$$\frac{\partial f}{\partial x} = y$$
+$$\frac{\partial f}{\partial y} = x$$
+$$x^\prime (t) = e^t$$
+$$y^\prime (t) = -\sin t$$
+$$F^\prime (t) = ye^t + x(-\sin t) = e^t\cos t -e^t \sin t$$
+\paragraph{Fact} If $D$ is interval (open and connected) then for any $x^0, x^1 \in D$ exists track $\gamma: [0,1] \to D$ such that $\gamma(0) = x^0$, $\gamma(1) = x^1$ and $\gamma$ is derivable.
+\paragraph{Conclusion} If $f$ has  partial derivatives in interval $D$ such that
+
+$$\frac{\partial f}{\partial y} = \frac{\partial f}{\partial x} \equiv 0$$
+then $f$ is constant.
+\paragraph{Proof}
+$\forall x^0, y^1 \in D \: \exists \gamma: [0,1] \to D$ derivable such that $\gamma(0)=x^0$ and $\gamma(1)=x^1$.
+$$F(t) = f\circ \gamma \Rightarrow F^\prime = \nabla f \cdot \gamma^\prime$$
+$$f(x^0) = F(\gamma(0)) = F(\gamma(1)) = f(x^1)$$
+\subsection{High order derivatives}
+Denote
+$$\frac{\partial }{\partial x} \left( \frac{\partial f}{\partial x} \right) = \frac{\partial^2 f}{\partial x^2} = f_{xx}$$
+$$\frac{\partial }{\partial y} \left( \frac{\partial f}{\partial x} \right) = \frac{\partial^2 f}{\partial y \partial x} = f_{xy}$$
+\paragraph{Example}
+$$f(x,y) = e^{xy}\cos y$$
+$$\frac{\partial f}{\partial x} = ye^{xy}\cos y$$
+$$\frac{\partial f}{\partial y} = xe^{xy}\cos y - e^{xy}\sin y $$
+$$\frac{\partial^2 f}{\partial x^2} = y^2e^{xy}\cos y$$
+$$\frac{\partial^2 f}{\partial y\partial x} = e^{xy}\cos y + xye^{xy}\cos y - ye^{xy}\sin y$$
+$$\frac{\partial^2 f}{\partial x\partial y} = e^{xy}\cos y + xye^{xy}\cos y - ye^{xy}\sin y$$
+
+\paragraph{Sentence}
+If $f$ defined on open set $D$ and both mixed derivatives exist and continuous, they are equal.
+\subparagraph{Proof}
+Choose $(x_0, y_0) \in D$, such that rectangle with sides of $\Delta x$, $\Delta y$ is fully inside $D$.
+Denote
+$$S(\Delta x, \Delta y) = \big[ f(x_0+\Delta x, y_0 + \Delta y) - f(x_0+\Delta x, y_0) \big] - \big[ f(x_0, y_0 + \Delta y) - f(x_0, y_0) \big] = g(x_0+\Delta x) - g(x)$$
+where $g(x) = f(x, y_0 + \Delta y) - f(x, y_0)$
+With Lagrange on $g$ ($0 <\theta < 1$):
+$$S(\Delta x, \Delta y) = g^\prime (x+\theta \Delta x) \Delta x = \big[\frac{\partial f}{\partial x}(x_0+\theta \Delta x, y_0+\Delta y) - \frac{\partial f}{\partial x}(x_0+\theta \Delta x, y_0)\big]\Delta x$$
+Once again by Lagrange
+$$S(\Delta x, \Delta y) = g^\prime (x+\theta \Delta x) \Delta x = \frac{\partial f}{\partial y \partial x}(x_0+\theta \Delta x, y_0+\theta_1\Delta y)\Delta x\Delta y$$
+$$\frac{S(\Delta x, \Delta y)}{\Delta x \Delta y} = \frac{\partial f}{\partial y \partial x}(x_0+\theta \Delta x, y_0+\theta_1\Delta y) \stackrel{\Delta x, \Delta y \to 0}{\to} \frac{\partial f}{\partial y \partial x}(x_0, y_0)$$
+\subsection{Integrals with parameter}
+\paragraph{Sentence} Let $f$ defined on $[a,b] \times [\alpha, \beta]$ and continuous there. Define
+$$F(s,t,u) = \int_s^t f(x,u) dx$$
+Then $F$ is continuous on $[a,b] \times [a,b] \times [\alpha, \beta]$.
+\subparagraph{Proof}
+Choose $\epsilon > 0 $. Since $f$ is continuous on closed finite rectangle, it's uniformly continuous. Then $\exists \delta >0 $ such that if $d(x^0,x^1) < \delta$ then
+$$\left|  f(x^0)-f(x^1)\right| < \frac{\epsilon}{b-a}$$
+Choose $s_0$, $t_0$, $u_0$.
+Let $M$ such that $$\forall (x,y) \in [a,b] \times [\alpha, \beta] \: |f(x,y)| \leq M$$
+Choose $s$,$t$,$u$ such that
+$|u-u_0| < \delta$, 
+$|t-t_0| < \frac{\epsilon}{M}$, 
+$|s-s_0| < \frac{\epsilon}{M}$. 
+
+Let's show that 
+$$\left|F(s,t,u)-F(s_0,t_0,u_0)\right| < 3\epsilon$$
+
+\begin{align*}
+\left|F(s,t,u)-F(s_0,t_0,u_0)\right| = \left| \int_s^t f(x,u) dx - \int_{s_0}^{t_0} f(x,u_0) dx\right| \leq \left| \int_s^t f(x,u_0) dx - \int_{s_0}^{t_0} f(x,u_0) dx\right|+\left| \int_s^t f(x,u) dx - \int_{s}^{t} f(x,u_0) dx\right| \leq\\\leq  \left| \int_{t_0}^t f(x,u_0) dx \pm \int_{s_0}^{s} f(x,u_0) dx\right|+\left| \int_s^t f(x,u) dx - \int_{s}^{t} f(x,u_0) dx\right| \leq\\\leq \left| \int_{t_0}^t \left|f(x,u_0)\right| dx \right| + \left|  \int_{s_0}^{s} \left|f(x,u_0)\right| dx\right|+\left| \int_s^t f(x,u) dx - \int_{s}^{t} f(x,u_0) dx\right| \leq\\\leq \left| (t-t_0)M \right| + \left|  (s-s_0)M\right|+\left| \int_s^t f(x,u) dx - \int_{s}^{t} f(x,u_0) dx\right| \leq 2\epsilon +\int_s^t\underbrace{\left|  f(x,u) - f(x,u_0)\right|}_{ \leq \frac{\epsilon}{b-a}} dx \leq 2\epsilon +(t-s)\frac{\epsilon}{b-a} \leq 3\epsilon 
+\end{align*}
+\paragraph{Sentence}
+Let $f$ defined on $[a,b] \times [\alpha, \beta]$ such that $\frac{\partial f}{\partial y}$ and both $f$ and $\frac{\partial f}{\partial y}$ are continuous. Define
+$$F(u) = \int_a^b f(x,u) dx$$
+Then $F$ is derivable on $[a,b]$ and
+$$F^\prime (u) = \int_a^b \frac{\partial }{\partial y}f(x,u) dx$$
+\subparagraph{Proof}
+By Lagrange($0<\theta < 1$)
+$$\Delta F = F(u+\Delta u) - F(u) = \int_a^b \big[ f(x,u+\Delta u) - f(x,u) \big]dx = \int_a^b \frac{\partial f}{\partial y}(x, u+\theta \Delta u) \Delta u dx$$
+$$\frac{\Delta F}{\Delta u} = \int_a^b \frac{\partial f}{\partial y}(x, u+\theta \Delta u) dx \stackrel{\Delta u \to 0}{\to} \int_a^b \frac{\partial f}{\partial y} (x,y) dx$$
+\paragraph{Sentence}
+Let $f$ defined on $[a,b] \times [\alpha, \beta]$ such that $\frac{\partial f}{\partial y}$ and both $f$ and $\frac{\partial f}{\partial y}$ are continuous. Define
+$$F(s,t,u) = \int_s^t f(x,u) dx$$
+Then all partial derivatives of $F$ exist and continuous, thus, $F$ is differentiable on $[a,b]$.

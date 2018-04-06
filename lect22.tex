@@ -1,0 +1,65 @@
+\paragraph{Definition}
+Let $f$ defined on closed set $D \subseteq \mathbb{R}^2$. Let $R$ rectangle containing $D$. Define
+$$f = \begin{cases}
+\tilde{f}(x,y)&(x,y)\in D\\
+0&(x,y)\not\in D
+\end{cases}$$ 
+We say that $f$ is integrable on $D$ if $\tilde{f}$ is integrable on $R$. In this case
+$$\iint\limits_{D} f = \iint\limits_{R} \tilde{f}$$
+\paragraph{Indicator function}
+$$1_D(x) = \chi_D(x) = \begin{cases}
+1&x\in D\\0&x\not \in D
+\end{cases}$$
+\paragraph{Area}
+We say that $D$ has area if $\chi_D$ is integrable on rectangle $R\supseteq D$. In this case area is defined as
+$$A(D) = \iint\limits{R} \chi_D$$
+\paragraph{Lemma}
+If boundary of $D$ has area 0, then $D$ has area.
+\subparagraph{Proof}
+$\chi_D$ should be integrable. let's show that $\chi_D$ is bounded and continuous except finite set of points of area 0. Actually we'll show that all points of discontinuity of $\chi_D$ are $\partial D$. 
+
+We can write ($int(D)$ is interior of $D$)
+$$R = \partial D \cup int(D) \cup int(R\setminus D)$$
+If $(x,y)\in int(D)$ then in neighborhood of $(x,y)$ $\chi_D \equiv 1$  and thus $\chi_D$ continuous there.
+If $(x,y)\in int(R\setminus D)$ then in neighborhood of $(x,y)$ $\chi_D \equiv 0$  and thus $\chi_D$ continuous there.
+If $(x,y)\in \partial D$ then we can find points where $\chi_D = 1$ and where $\chi_D = 0$, and thus $\chi_D$ not continuous there. 
+\paragraph{Theorems}
+\begin{enumerate}
+	\item $f,g$ integrable on $D$, then $af+bg$ integrable on $D$ and
+	$$\iint\limits{D} \left(af+bg\right) = a\iint\limits_{D} f + b\iint\limits_{D} g$$
+	\item $f \geq g$ on $D$ and both are integrable on $D$ then 
+	$$\iint\limits_{D} f \geq \iint\limits_{D} g$$
+	\item If $m \leq f \leq M$ integrable on $D$ then
+	$$mA(D) \leq \iint\limits_{D} f \leq MA(D)$$
+	\item If $f$ is integrable on $D$ then $|f|$ is integrable on $D$ and
+	$$\left|\iint\limits_{D} f\right| \leq \iint\limits_{D} |f|$$
+	\item If $f$ bounded on $D$ and $A(D)=0$ then $f$ is integrable on $D$ and
+	$$\iint\limits_{D} = 0$$
+	\item If $D_1$, $D_2$ have area and $A(D_1 \cap D_2) = 0$ and $f$ is integrable on $D_1$ and $D_2$ then $f$ is integrable on $D_1 \cup D_2$ and
+	$$\iint\limits_{D_1\cup D_2} f = \iint\limits_{D_1} f +\iint\limits_{D_2} f$$  
+\end{enumerate}
+\paragraph{Fubini's theorem}
+Let $f$ integrable on $R = [a,b] \times [\alpha, \beta]$. Suppose $\forall x \in [a,b]$ $\exists I(x) = \int_{\alpha}^\beta  f(x,y) dy$. Then $I(x)$ is integrable on $[a, b]$ and
+$$\iint\limits_{R} f = \int_{a}^{b} I(x) dx = \int_a^b  \int_{\alpha}^{\beta} f(x,y) dy dx$$
+\subparagraph{Proof}
+Choose partitions
+$$a=x_0<x_1<\dots<x_n=b$$
+$$\alpha = y_0 < y_1 <\dots < y_m = \beta$$
+Denote subrectangles as $R_{ij}$. For all $i$ choose $x_{i-1}\leq \tau_i \leq x_i$
+$$I(\tau_i) = \int_{\alpha}^{\beta} f(\tau_i,y) dy$$
+$$I(\tau_i) = \int_{\alpha }^\beta f(\tau_i, y) dy = \sum_{k=1}^{m} \int_{y_{k-1}}^{y_k} f(\tau_i, y) dy \leq \sum_{k=1}^{m} M_{ik} \Delta_{y_k}$$
+Similarly for $m_{ij}$:
+$$\sum_{k=1}^m m_{ik}\Delta_{y_k} \leq I(\tau_i) \leq \sum_{k=1}^m M_{ik} \Delta_{y_k}$$
+Those are $n$ inequalities. Lets multiply each one by corresponding $\Delta x_i$ and sum them all:
+$$L(P,f) = \sum_{i,k} m_{ij}\Delta y_k x_i \leq \sum_{i=1}^n I(\tau_i) \Delta x_i \leq \sum_{i,k} M_{ik} \underbrace{\Delta y_k \Delta x_i }_{\Delta_{ij}} = U(P,f)$$
+$$L(P,f) \leq \iint\limits_{R} f \leq U(P,f)$$
+Thus
+$$\left|\iint\limits_{R} f - \sum_{i=1}^n I(\tau_i) \Delta x_i  \right| \leq U(P,f) - L(P,f)$$
+Let $\epsilon > 0$. From integrability of $f$ $\exists \delta > 0$ such that if $\lambda(P) < \delta$ then $U(P,f)-L(P,f)<\epsilon$. Then for this partition
+$$\left|\iint\limits_{R} f - \sum_{i=1}^n I(\tau_i) \Delta x_i  \right| < \epsilon$$
+Let $P_0$ partition of $[a,b]$ with $\lambda(P_0) < \delta$ and partition  $P_1$ of $[\alpha, \beta]$ with $\lambda(P_1) < \delta$. $P_0$ and $P_1$ provide partition $P$ with $\lambda(P) < \delta$.
+Since $\sum_{i=1}^n I(\tau_i) \Delta x_i$ doesn't depend on $P_1$. For all partitions $P_0$ og $[a,b]$ with $\lambda(P_0) < \delta$  and for all choices of points $\left\{ \tau_i \right\}$ we get that 
+$$\left|\iint\limits_{R} f - \sum_{i=1}^n I(\tau_i) \Delta x_i  \right| < \epsilon$$
+according to Riemann sums
+
+$$\left|\iint\limits_{R} f - \int_a^b I(x) dx \right|< \epsilon$$

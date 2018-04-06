@@ -1,0 +1,34 @@
+\paragraph{Example}
+$D$ is an triangle between $(0,0)$, $(1,1)$ and $(1,0)$
+and 
+$$f(x,y) = \begin{cases}
+\frac{1}{x-y}&x\neq y\\0&x=y
+\end{cases}$$
+Define
+$$D_n = \left\{ (x,y): \frac{1}{n}\leq x\leq 1, 0\leq y\leq x-\frac{1}{n} \right\}$$
+\begin{align*}
+\iint\limits_{D_n} \frac{1}{x-y} = \int_{\frac{1}{n}}^{1}\int_0^{x-\frac{1}{n}}\frac{1}{x-y}dydx = \int_{\frac{1}{n}}^{1} \left[ -\ln(x-y) \right]_0^{x-\frac{1}{n}} dx = \int_{\frac{1}{n}}^{1} -\ln \frac{1}{n} + \ln x dx = \int_{\frac{1}{n}}^{1} \ln n + \ln x dx =\\= \left[ x\ln n + \left( x\ln x - x \right)\right]_{\frac{1}{n}}^{1} = (1-\frac{1}{n})\ln n - 1 + \frac{1}{n} \ln n + \frac{1}{n} = \ln n - (1-\frac{1}{n})
+\end{align*}
+\paragraph{Convolution}
+$f,g: [0, \infty) \to \mathbb{R}$ continuous and $\int_0^\infty |f| dx < \infty $, $\int_0^\infty |g| dx < \infty$ $\forall x \geq 0$ we can define convolution:
+$$(f \ast g) (x) = \int_0^x f(t)g(x-t) dt$$
+\paragraph{Claim}
+$$\int_0^\infty (f \ast g) dx = \int_0^\infty f  \int_0^\infty g$$
+\subparagraph{Proof}
+$$\int_0^\infty f \int_0^\infty g = \lim_{n \to \infty} \int_0^n f(t) dt \int_0^n g(u)  du$$
+Define $s=u+t$
+$$\lim_{n \to \infty} \int_0^n f(t) dt \int_0^n g(u)  du = \lim_{n \to \infty} \int_0^n f(t) \int_t^{n+t} g(s-t)  ds dt = \lim_{n \to \infty} \int_0^n\int_t^{n+t} f(t)  g(s-t)  ds dt$$
+
+Define $D = \left\{ (t,s): s \geq t \right\}$
+$$\lim_{n \to \infty} \int_0^n\int_t^{n+t} f(t)  g(s-t)  ds dt= \lim \iint\limits_{D_n} f(t)g(s-t) $$
+Define $A_n$ as a triangle between $(0,0)$, $(0,n)$ and $(n,n)$. If $ f(t)  g(s-t) $ is integrable we can replace $D_n$ by $A_n$. 
+$$\lim \iint\limits_{D_n} f(t)g(s-t) = \lim_{n \to \infty} \iint\limits_{A_n} f(t)g(s-t) = \lim_{n \to \infty} \int_0^n \int_0^s f(t)g(s-t) dt ds = \lim_{n \to \infty} \int_0^n (f\ast g)(s) ds = \int_0^\infty (f\ast g)(s) ds$$
+Now we need to show that $ f(t)  g(s-t) $ is integrable. It's true iff $ |f(t)  g(s-t)|$ is integrable. We can show it by proofing that
+$\lim_{n \to \infty} \iint\limits_{D_n} |f(t)g(s-t)|$ exists and finite.
+
+By repeating te calculation we can get
+$$\infty > \int_0^\infty |f| \int_0^\infty |g| = \dots = \lim \iint\limits_{D_n} |f(t)g(s-t)|$$
+\paragraph{Note}
+Laplace transform: $$L(f)(x) = \int_0^\infty f(t) e^{-xt} dt$$
+It can be shown that
+$$L(f\ast g) = L(f)L(g)$$

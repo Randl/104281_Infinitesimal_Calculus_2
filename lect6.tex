@@ -1,0 +1,90 @@
+\paragraph{Example}
+If we have more than one ``problem'', we divide integral into two, one for each problem. For example:
+$$\int_0^\infty \frac{1}{x^\alpha} dx$$
+This particular integral doesn't exist for any $\alpha$.
+\paragraph{Example}
+$$\int_0^6 \frac{1}{\left(x-2\right)^2}dx$$
+We might use the fact that antiderivative is $$\left[-\frac{1}{x-2}\right]_0^6 = -\frac{1}{4}-\frac{1}{2}=-\frac{3}{4}$$
+However, this isn't right, since function isn't integrable (not bounded). Instead, we should divide the problem into two improper integrals:
+$$\int_0^6  \frac{1}{\left(x-2\right)^2}dx = \int_0^2  \frac{1}{\left(x-2\right)^2}dx + \int_2^6  \frac{1}{\left(x-2\right)^2}dx$$
+$$\int_0^2  \frac{1}{\left(x-2\right)^2}dx  = \lim_{c \to 2^-}\int_0^c  \frac{1}{\left(x-2\right)^2}dx = \left[-\frac{1}{x-2}\right]_0^c =  \lim_{c \to 2^-} -\frac{1}{c-2} - \frac{1}{2} = -\infty$$
+which means the integral doesn't exists.
+\paragraph{Claim}
+If $f$,$g$ integrable on $[a,\infty)$ then both $f+g$ and $c\cdot g$ are integrable on $[a,b]$ and
+$$\int_a^\infty (cf+g) = c\int_0^\infty f + \int_0^\infty g$$
+\subparagraph{Proof} is trivial, from linearity of the integral. This is right for all other types of improper integrals.
+\paragraph{Theorem} Let f defined on $[a, \infty)$ and integrable on every $[a,c]$ for $c>a$. Then $\int_a^\infty f dx$ exists if $\forall \epsilon > 0 \exists M$ such that if $c_2\geq c_1 \geq M$ then $\left| \int_{c_1}^{c_2} \right| < \epsilon$
+\subparagraph{Proof} $\lim_{x\to \infty} F(x) \iff \forall \epsilon > 0  \exists M$ such that if $c_2\geq c_1 \geq M$ then $\left| F(c_2)-F(c_1) \right| < \epsilon$ when $F(x) = \int_a^x f dx$ 
+\paragraph{Theorem} Let f defined on $[a, b)$ and integrable on every $[a,c]$ for $b>c>a$. Then $\int_a^b f dx$ exists if $\forall \epsilon > 0 \exists \delta > 0$ such that if $b>c_2\geq c_1 > b -\delta$ then $\left| \int_{c_1}^{c_2} \right| < \epsilon$
+\paragraph{Conclusion}Let $f$ defined on $[a, \infty)$ and integrable on every $[a,c]$ for $c>a$. If exists $\int_a^\infty \left| f \right| dx $ the also $\int_a^\infty f dx$ exists.
+\subparagraph{Proof} Using $$\left| \int_{c_1}^{c_2} f dx \right| \leq \int_{c_1}^{c_2} \left|  f dx \right| < \epsilon $$
+\paragraph{Definition} If exists $\int_a^\infty |f| dx$ we tell that integral converges absolutely. According to conclusion, if integral converges absolutely, it converges.
+\paragraph{Example} Note that conclusion has other conditions:
+$$g(x)  =\begin{cases}
+1&x\in \mathbb{Q}\\
+-1&x\in \mathbb{Q}\\
+\end{cases}$$
+$g(x)$ isn't integrable, but $|g(x)|$ is.
+\subsection{Existence of improper integral for $f\geq0$}
+\paragraph{Theorem} $f\geq 0$ on $[a, \infty)$ integrable on every $[a,c]$ for $c>a$ and $F(x) = \int_a^x f dt$. Then $\int_a^\infty f dx$ exists $\iff F$ is bounded.
+\subparagraph{Proof} $F$ is monotonous: $x_1 > x_2  \Rightarrow F(x_1) = \int_a^{x_1} = \int_a^{x_2} + \int_{x_2}^{x_1} \geq \int_a^{x_2} = F(x_2)$.
+
+That means that $\lim_{c\to \infty} F(c)$ exists iff $F(x)$ is bounded.
+\paragraph{Theorem} Let $k>0$ and $f,g$ that are defined  on $[a, \infty)$ integrable on every $[a,c]$ for $c>a$ and $\forall x>a \:0 \leq f(x) \leq kg(x)$. If $\int_a^\infty g(x)$ exists, then also $\int_a^\infty f(x)$ exists.
+\subparagraph{Proof} Denote $F(x)=\int_a^x f(t) dt$ and $G(x)=\int_a^x g(t) dt$. From monotonousness of integral, $F(x) \leq kG(x)$. Since $G(x)$ is bounded, $F(x)$ is bounded too, meaning $f(x)$ is integrable.
+\subparagraph{Note} It's enough that $\leq f(x) \leq kg(x)$ just for $x>c$ for some c.
+\paragraph{Example}
+$$\int_1^\infty \frac{\sin x}{x^2} dx $$
+To use previous theorems, we take the absolute value: $$\left| \frac{\sin x}{x^2} \right| \leq \frac{1}{x^2}$$ Since $\frac{1}{x^2}$ is integrable, $\left| \frac{\sin x}{x^2} \right|$ is integrable too, and therefore, $\frac{\sin x}{x^2}$ converges.
+\paragraph{Example}
+
+$$\int_1^\infty \frac{\sin x}{x} dx = \lim_{c\to \infty} \int_1^c \frac{\sin x}{x} dx $$
+Integrating by parts:
+$$\int_1^c \frac{\sin x}{x} dx  = \left[-\frac{\cos x}{x}\right]_1^c - \underbrace{\int_1^c \frac{\cos x}{x^2} dx}_{\parbox{1cm}{\scriptsize \centering exists}}$$
+$$\lim_{c \to \infty} \left[-\frac{\cos x}{x}\right]_1^c = \lim_{c \to \infty} -\frac{\cos c}{c} + \cos 1 = \cos 1$$
+Since limit exists, integral converges.
+\paragraph{Example}
+$$\int_1^\infty \left|\frac{\sin x}{x}\right| dx$$ doesn't exist. First, lets show that $$\int_1^\infty \frac{\sin^2 x}{x} dx$$ doesn't exists.
+First of all, $$\int_1^c \frac{\sin^2 x}{x} = \int_1^c \frac{1}{2x} - \int_1^c \frac{\cos 2x}{2x}$$
+$ \int_1^c \frac{1}{2x} = \left[\ln x\right]_1^c$ which diverges. Back to $\left|\frac{\sin x}{x}\right|$, since   $\frac{\sin^2 x}{x}<\left|\frac{\sin x}{x}\right|$, $\int_1^\infty \left|\frac{\sin x}{x}\right|$ doesn't exists.
+\paragraph{Theorem} For two functions $f,g \geq 0$ integrable on every $[a,c]$. Suppose $$\lim_{x \to \infty} \frac{f(x)}{g(x)} = L$$ and $0 < L < \infty$. Then $\int_a^\infty f(x)$ converges iff $\int_a^\infty g(x)$ converges.
+\subparagraph{Proof} $\lim \frac{f}{g} = L$ which means that exists $n$ such that for all $x>n$ $$\frac{L}{2} < \frac{f(x)}{g(x)} < 2L$$
+$$f(x) < 2Lg(x)$$
+$$\frac{2}{L}f(x) > g(x)$$
+From comparison theorem  $\int_a^\infty f(x)$ converges iff $\int_a^\infty g(x)$ converges.
+\paragraph{Example}
+$$\int_1^\infty \sin \frac{1}{x}dx$$
+Compare with $\frac{1}{x}$:
+$$\lim_{x\to\infty} \frac{\sin\frac{1}{x}}{\frac{1}{x}} = 1$$
+Since $\int_1^\infty \frac{1}{x}$ doesn't exists, $\int_1^\infty \sin \frac{1}{x}dx$ doesn't exist too.
+\paragraph{Example}
+$$\int_0^\infty \frac{\sqrt{x}}{\sqrt{1+x^4}}$$
+exists, since $f(x) \propto x^{-\frac{3}{2}}$.
+\paragraph{Dirichlet's theorem} Let $f(x) > 0$ decreasing on $[a,\infty)$ and $f^\prime$ exists and continuous and $\lim_{x\to\infty} f(x) = 0$. Let $g(x)$ continuous on $[a,\infty)$ and $\sup\limits_c \left| \int_a^c g dx \right| < \infty$ then $\int_a^\infty fg dx$ exists.
+\subparagraph{Proof} Denote $G(x) = \int_a^x g(t) dt$, meaning $G^\prime = g$.
+$$\int_a^c f(x)g(x) dx =\left[ f(x)G(x)\right]_a^c  - \int_a^c f^\prime(x) G(x) dx$$
+$$\lim_{c\to\infty} \left[ f(x)G(x)\right]_a^c = \underbrace{f(c)}_{0}G(c) - f(a)\underbrace{G(a)}_{0} = 0$$
+Denote $\infty > M = \sup_c |G(c)|$, then $\left|f^\prime G\right| \leq M\left| f^\prime \right| = -Mf^\prime$
+$$\lim_{c\to\infty}\int_a^c f^\prime dx = \lim_{c\to\infty} f(c) - f(a) = -f(a)$$
+Than means $\int_a^\infty f^\prime dx$ and also $\int_a^\infty -Mf^\prime dx$ exists, from comparison theorem $\int_a^c \left|f^\prime(x) G(x)\right| dx$  and $\int_a^c f^\prime(x) G(x) dx$ exist too. Since both limits exist, $\int_a^\infty fg dx$ exists.
+\paragraph{Conclusion} If $g(x)$ continuous on $[a,\infty)$ and $\sup_c \left| \int_a^c g dx \right| < \infty$ then $\forall \alpha > 0$ $\int_a^\infty \frac{g(x)}{x^\alpha} dx$ converges. 
+\subparagraph{Proof} $f(x)  =\frac{1}{x^\alpha}$
+\paragraph{Example} $\int_1^\infty \frac{\sin x}{x^\alpha}dx$ converges for $\alpha > 0$. take $g(x) = \sin x$.
+\paragraph{Example}
+$$\int_a^\infty e^{-\alpha  x} f(x) dx$$ when $\alpha > 0$, $f$ continuous and $\int_a^\infty f dx$ exists.
+With Dirichlet's theorem when $f$ plays role of $g$ and $e^{-\alpha  x}$ plays role of $f$.
+\paragraph{Example}
+$$\int_0^\infty \frac{\sin x}{x\sqrt{x}} dx = \underbrace{\int_0^1 \frac{\sin x}{x\sqrt{x}} dx}_{\parbox{2cm}{\scriptsize \centering limit comparison with $\frac{1}{\sqrt{x}}$}}+\underbrace{\int_1^\infty \frac{\sin x}{x\sqrt{x}} dx}_{\parbox{2cm}{\scriptsize \centering converges}}$$
+$$\lim_{x\to 0} \frac{\frac{\sin x}{x\sqrt{x}}}{\frac{1}{\sqrt{x}}} = 1$$
+\paragraph{Dirichlet's theorem for left endpoint} Let $f(x) > 0$ increasing on $(a,b]$ and $f^\prime$ exists and continuous and $\lim_{x\to a^+} f(x) = 0$. Let $g(x)$ continuous on $(a,b]$ and $\sup_c \left| \int_c^b g dx \right| < \infty$ then $\int_a^\infty fg dx$ exists.
+\paragraph{Example}
+$$\int_0^1 \frac{1}{t} \sin t dt = \int_0^1 t \cdot \left(\frac{1}{t^2} \sin \frac{1}{t}\right) dt $$
+where $t$ plays role of $f$ and $\frac{1}{t^2} \sin \frac{1}{t}$ plays role of $g$.
+$$\int_c^1 \frac{1}{t^2} \sin \frac{1}{t} dt \stackrel{\scriptsize u=\frac{1}{t}}{=} -\int_{\frac{1}{c}}^{1} \sin u du = \int_{1}^{\frac{1}{c}}\sin u du = \left[ -\cos u\right]_{1}^{\frac{1}{c}} = \cos 1 - \cos \frac{1}{c}$$
+$$\int_c^1 \frac{1}{t^2} \sin \frac{1}{t} dt \leq 2$$
+\paragraph{Example}
+$$\int_0^1 \frac{1}{\ln x} dx$$
+Define $\frac{1}{\ln 0} = 0$, so the only problematic point 1.
+$$\lim_{x\to 1} \frac{x-1}{\ln x} = \lim_{x\to 1} \frac{1}{\frac{1}{x}} = \lim_{x\to 1} x = 1$$
+
+Since $$\int_0^1 \frac{1}{x-1} dx$$ diverges, $$\int_0^1 \frac{1}{\ln x} dx$$ diverges too.

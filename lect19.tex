@@ -1,0 +1,83 @@
+\paragraph{Example}
+$$f(x,y) = \begin{cases}
+\frac{xy}{x^2+y^2}&(x,y)\neq (0,0)\\
+0&(x,y)= (0,0)\\
+\end{cases}$$
+We've seen that $f(x)$ isn't continuous and thus not differentiable.
+\paragraph{Example}
+$$f(x,y) = \begin{cases}
+\frac{x^2y}{x^2+y^2}&(x,y)\neq (0,0)\\
+0&(x,y)= (0,0)\\
+\end{cases}$$
+This function is continuous in $(0,0)$ and thus on $\mathbb{R}^2$. Is it differentiable? If yes,
+$$f(x,y) = \underbrace{f(0,0)}_{=0}+\underbrace{\frac{\partial f}{\partial x}(0,0)}_{=0}\cdot x+\underbrace{\frac{\partial f}{\partial y}(0,0)}_{=0} \cdot y + \epsilon(x,y)$$
+That means that if $f(x)$ differentiable
+$$\lim_{(x,y) \to (0,0)}\frac{f(x,y)}{\sqrt{x^2+y^2}} = 0$$
+Let's find the limit
+$$\lim_{(x,y) \to (0,0)}\frac{x^2y}{\left(x^2+\left(\lambda x\right)^2\right)^{\frac{3}{2}}} $$
+Suppose $y = \lambda x$
+
+$$\lim_{(x,\lambda x) \to (0,0)}\frac{x^2\lambda x}{\left(x^2+\left(\lambda x\right)^2\right)^{\frac{3}{2}}} = \lim_{(x,\lambda x) \to (0,0)}\frac{\lambda x^3 }{x^3\left(1+\lambda^2\right)^{\frac{3}{2}}} = \frac{\lambda }{\left(1+\lambda^2\right)^{\frac{3}{2}}}$$
+Meaning we get different limit for different pathes ($\lambda$), and thus limit doesn't exist.
+
+\paragraph{Example}
+$$f(x,y) = \begin{cases}
+\left(x^2+y^2\right)\cdot \sin \left(\frac{1}{\sqrt{x^2+y^2}}\right)&(x,y)\neq (0,0)\\
+0&(x,y)= (0,0)\\
+\end{cases}$$
+This function is continuous since left part is converging to 0 and right part is bounded.
+
+$$f(x,0) =  x^2 \cdot \sin \frac{1}{|x|}$$
+$$\frac{\partial f}{\partial x}(0,0) = \lim_{x\to 0} \frac{x^2\sin \frac{1}{|x|}-0}{x} = \lim_{x\to 0} x\sin \frac{1}{|x|} = 0$$
+By symmetry
+$$\frac{\partial f}{\partial y}(0,0) = 0$$
+$$\lim_{(x,y) \to (0,0)} \frac{f(x,y)}{\sqrt{x^2+y^2}} = \sqrt{x^2+y^2} \cdot \sin \left(\frac{1}{\sqrt{x^2+y^2}}\right) = 0$$
+Function is differentiable.
+$$\frac{\partial f}{\partial x} = \begin{cases}
+2x\sin \left(\frac{1}{\sqrt{x^2+y^2}}\right) - \frac{x}{\sqrt{x^2+y^2}}\cdot \cos \left(\frac{1}{\sqrt{x^2+y^2}}\right) &(x,y)\neq (0,0)\\
+0&(x,y)= (0,0)\\
+\end{cases}$$
+Is $\frac{\partial f}{\partial x}$ continuous in $(0,0)$? Take path $(x,0)$:
+$$\lim_{(x,0) \to (0,0)} \frac{x}{\sqrt{x^2+y^2}}\cdot \cos \left(\frac{1}{\sqrt{x^2+y^2}}\right) = \lim_{x\to 0}\frac{x}{|x|}\cdot \cos \left(\frac{1}{|x|}\right) =  \lim_{x\to 0} \cos \left(\frac{1}{|x|}\right)$$
+which doesn't exists.
+\paragraph{Sentence}
+If $f$ has continuous partial derivatives in neighborhood of $(x_0,y_0)$ then $f$ is differentiable in $(x_0,y_0)$
+\subparagraph{Proof}
+$$f(x_0+\Delta x, y_0+\delta y) - f(x_0, y_0) = \underbrace{f(x_0+\Delta x, y_0+\delta y) - f(x_0, y_0+\delta y)}_{I} + \underbrace{f(x_0, y_0+\delta y) - f(x_0, y_0)}_{II}$$
+By Lagrange, 
+$$\exists 0<\theta_1 <1,0<\theta_2 <1$$
+$$ I = \frac{\partial f}{\partial x}(x_0+\theta \Delta x, y + \Delta y)\Delta x$$
+$$II = \frac{\partial f}{\partial y}(x_0, y +\theta  \Delta y)\Delta y$$
+Denote 
+$$\alpha(h,k) = \frac{\partial f}{\partial x}\left( x_0 + \theta_1 h, y_0 +k \right) - \frac{\partial f}{\partial x}\left( x_0, y_0 \right)$$
+$$\alpha(h,k) = \frac{\partial f}{\partial xy}\left( x_0, y_0 +\theta_2 k \right) - \frac{\partial f}{\partial y}\left( x_0, y_0 \right)$$
+From continuousness of $\frac{\partial f}{\partial x}$ and $\frac{\partial f}{\partial y}$
+$$\lim_{h,k \to 0} \alpha(h,k) = 0$$
+$$\lim_{h,k \to 0} \beta(h,k) = 0$$
+Now
+$$f(x_0+\Delta x, y_0 + \Delta y) - f(x_0,y_0) = I+II = \left[ \alpha(\Delta x, \Delta y) + \frac{\partial f}{\partial x}(x_0,y_0) \right]\Delta x+\left[ \beta(\Delta x, \Delta y) + \frac{\partial f}{\partial y}(x_0,y_0) \right]\Delta y$$
+\subsection{Directional derivative}
+\paragraph{Definition}
+Let $v \neq 0$ in $\mathbb{R}^n$ and $f$ defined in neighborhood of $x^0$. Derivative of $f$ in direction $v$ is
+$$\lim_{t \to 0^+} \frac{f(x^0+tv)-f(x^0)}{t}$$
+or
+$$\frac{d}{dt} f(x^0+tv), \: in \: t=0$$
+if it exists. It is denoted $D_v f(x^0)$ or $\frac{df}{dv}(x^0)$.
+\paragraph{Example}
+$$f(x,y) = x^2e^{-y}$$
+$$v = \left(\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}\right)$$
+$$x^0 = (1,0)$$
+$$\frac{f(x^0+tv)-f(x^0)}{t} = \frac{f(1+\frac{t}{\sqrt{2}},\frac{t}{\sqrt{2}})-f(1,0)}{t} = \frac{1}{t}\left[ \left(1+\frac{t}{\sqrt{2}}\right)^2e^{-\frac{t}{\sqrt{2}}} - 1 \right] = \frac{d}{dt} \left[ \left(1+\frac{t}{\sqrt{2}}\right)^2e^{-\frac{t}{\sqrt{2}}} \right] = \frac{1}{\sqrt{2}}$$
+\paragraph{Sentence}
+If $f$ differentiable in $(x_0,y_0)$ then $\forall v \neq 0$ exists directional derivative in point and
+$$D_v f(x^0) = \frac{\partial f}{\partial x}(x_0, y_0)v_1 + \frac{\partial f}{\partial y}(x_0, y_0)v_2$$
+$$\nabla f(x,y) = \left(\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}\right)$$
+$$D_v f(x^0) = \nabla f(x,y) \cdot v$$
+
+\subparagraph{Proof}
+$$f(x_0+tv+1, y_0+tv_2) - f(x_0, y_0) = \frac{\partial f}{\partial x}(x_0,y_0)tv_1 + \frac{\partial f}{\partial y }(x_0,y_0)tv_2 + \epsilon (tv_1, tv_2)$$
+$$\frac{f(x_0+tv+1, y_0+tv_2) - f(x_0, y_0) }{t} = \frac{\partial f}{\partial x}(x_0,y_0)v_1 + \frac{\partial f}{\partial y }(x_0,y_0)v_2 +\frac{ \epsilon (tv_1, tv_2)}{t}$$
+$$\frac{ \epsilon (tv_1, tv_2)}{\sqrt{t^2v_1^2+t_2v_2^2}} = \frac{ \epsilon (tv_1, tv_2)}{t|v|} \to 0 \Rightarrow \frac{ \epsilon (tv_1, tv_2)}{t} \to 0$$
+\paragraph{Note} For dot product $|xy| \leq |x||y|$
+\paragraph{Conclusion} 
+$$\left| D_v f(x^0) \right| \leq \left|\nabla f(x^0)\right|\cdot 1$$

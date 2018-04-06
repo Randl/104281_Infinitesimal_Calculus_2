@@ -1,0 +1,78 @@
+\subsection{Topological definitions in $\mathbb{R}$}
+\begin{enumerate}
+	\item $x \in S$ \textbf{interior point} of $S$ if $\exists r > 0$ such that $B(x,r)\subseteq S$.
+	\item $S$ is \textbf{open} if each of its points is interior. 
+	\item $x$ is \textbf{limit point} of $S$ if $\forall r > 0 \exists y \neq x, \: y\in B(x,r) \: y \in S$ 
+	The following definitions are equivalent:
+	\begin{enumerate}
+		\item $x$ is limit point of $S$
+		\item Exists sequence $\left\{ x^k \right\}_{k=1}^\infty \subseteq S$ $\forall k\: x^k \neq k$.
+		\item $\forall r > 0 $, $B(x,r)$ contains infinite number of points from $S$.
+	\end{enumerate}
+	\item $S$ is \textbf{closed} if it contains all its limit points.
+	\item Boundary of $S$: $x \in \partial S$ if $\forall r>0$ $B(x,r)$ contains points both inside and outside of $S$.
+	\item The closure of $S$: $\bar{S} = S \cup \partial S$ 
+	\item The diameter of $S$: $\diam S = \sup\left\{ d(x,y) \: x,y\in S \right\}$
+	\item Line segment in $\mathbb{R}^n$: given $x,y \in \mathbb{R}^n$ then line segment connecting them is $$\left\{tx+(1-t)y: 0 \leq t \leq 1\right\} = [x,y]$$
+	
+	Polygonal chain with vertices $x^1,x^2,\dots x^k$ is $\bigcup={i=1}^{k-1} \left[x^i, x^{i+1}\right]$
+	
+	Let $S$ is open set in $\mathbb{R}$. $S$ is called connected if $\forall x,y \in S$ exists polygonal chain connecting $x$ and $y$ and contained in $S$. 
+	
+	Interval is open connected set.
+\end{enumerate}
+\paragraph{Lemma}
+$S$ is closed $\iff$ if $S \ni x^k \to x$ then $x\in S$.
+\paragraph{Sentence} $S$ open $\iff$ $\mathbb{R}^n \setminus S$ closed.  
+\paragraph{Lemma} $\bar{S}$ is closed.
+\subparagraph{Proof} Show that $\mathbb{R}^n \setminus \bar{S}$ is open. Take $x \notin \bar{X}$.
+
+$x \notin \partial S \Rightarrow$  $\exists r$ such that or $B(x,r) \subseteq S$ or $B(x,r) \subseteq \mathbb{R}^n \setminus  S$, since $x\notin S$, $B(x,r) \subseteq \mathbb{R}^n \setminus  S$. Obviously, $B(x,r)$ cannot contain points of $\partial S$ too.
+\paragraph{Lemma}
+\begin{enumerate}
+	\item $x \in \bar{S}$ $\iff$ $\exists S \supseteq \left\{ x^k\right\} \to x$.
+	\item $\bar{S}$ is the smallest closed set such that $S \subseteq \bar{S}$.
+	
+\end{enumerate}
+
+\paragraph{Cantor's lemma}
+If $\left\{ A_k \right\}_{k=1}^{\infty}$ sequence of closed bounded non-empty sets such that $\forall k \: A_{k+1}\subseteq A_k$ then $\bigcap A_k \neq \emptyset$. If $\diam A_k \to 0$, $\bigcap_1^\infty A_k = \left\{ pt. \right\}$
+\subparagraph{Proof}
+For each $k$ choose $x^k \in A_k$. $\left\{x_k \right\} \subseteq A_1$ $Righarrow$ $x_k$ bounded $\Rightarrow$ $\exists \left\{x^{k_m}\right\} \to x$. 
+
+Given $k$ $\exists M \forall m > M \: k_n > k$. $\Rightarrow$ $x^{k_m} \in A_{k_m} \subseteq A_k$ . Starting from some point all elements of sequence are contained in $A_k$:
+$$A_k \ni x^{k_m} \to x \Rightarrow x \in A_k \Rightarrow x\in \bigcup A_k$$
+
+Now suppose $\diam A_k \to 0$ and $\exists x,y \in \bigcap_1^\infty A_k $.
+$$d(x,y) \leq \diam A_k \to 0 \Rightarrow x=y$$
+\paragraph{Heine–Borel theorem}
+If $S$ is closed and bounded and $\left\{ G_\alpha  \right\}_{\alpha \in A}$ of open sets such that $S \subseteq \cup_{\alpha \in A} G_\alpha$ (i.e. is cover of  $S$). Then exists $\alpha_1, \alpha_2,\alpha_3,\dots,\alpha_n$ in $A$ such that
+$$S \subseteq \bigcup_{i=1}^n  G_{\alpha_i}$$
+\subsection{Functions}
+Define graph of function $$G(f) = \left\{ \left(x_1,x_2,\dots, x_n,y\right): \: y = f\left(x_1,x_2,\dots, x_n\right)  \right\}$$
+
+Height set of $f$: let $c \in\mathbb{R}$ then height set of c is: $$\left\{ \left(x_1,x_2,\dots, x_n\right)  : f\left(x_1,x_2,\dots, x_n\right)  = c  \right\}$$.
+\paragraph{Example}
+$$f(x,y) = \frac{xy}{x^2+y^2}$$
+$$c = \frac{xy}{x^2+y^2}$$
+$$x^2-\frac{1}{c}xy+y^2 = 0$$
+$$x = \frac{\frac{y}{c}\pm \sqrt{\frac{1}{c^2}y^2-4y^2}}{2}$$
+Suppose $x,y>0$:
+$$x = \frac{1}{2}\left(\frac{1}{c}\pm \sqrt{\frac{1}{c^2}-4}\right)y$$
+\subsection{Limit}
+\paragraph{Definition} Let $f$ defined in neighborhood $B(x^k,r)$ of $x^k$ (not necessary in $x^k$ itself).   We say limit of $f$ in $x^k$ is $L$ writing 
+$$L = \lim_{x\to x^k} f(x)$$
+if $\forall \epsilon > 0 \exists \delta > 0$ such that $0<d(x,x^k)<\delta \Rightarrow \left|f(x)  - L\right|< \epsilon$.
+
+Alternatively $$L = \lim_{x\to x^k} f(x)$$
+if $$x^m \neq x^k \to x^m \Rightarrow f(x^m) \to L$$
+
+\paragraph{} For example, in previous example $f(x,y) = \frac{xy}{x^2+y^2}$, we can try to find two sequences going to $(0,0)$ with different limits, for example $\left(\frac{1}{n},0\right)$.
+
+\paragraph{Example} 
+$$f(x,y) = \frac{x^2y}{x^2+y^2}$$ Note that $\left(\frac{1}{n},\frac{1}{n}\right)$ or $\left(\frac{1}{n},0\right)$ wouldn't work.
+
+To show that limit exists, we usually try to approximate value of function around the point:$$\left|f(x,y)\right| = \left| \frac{x^2y}{x^2+y^2} \right| = \left| \frac{x^2}{x^2+y^2} \right|y \leq \left|y\right|\to 0$$
+\paragraph{Example}
+$$f(x,y) = \frac{x^2y}{x^4+y^2}$$
+By substitution $t=x^2$.

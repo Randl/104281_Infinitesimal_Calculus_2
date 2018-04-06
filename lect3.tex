@@ -1,0 +1,76 @@
+\subsection{Riemann sums}
+Given partition $P$ and points $\left\{t_i\right\}_{i=1}^n$ such that $x_{i-1} \leq t_I \leq x_i$, Riemann sum is
+$$\sigma\left(P,f,\left\{t_i\right\}\right) = \sum_{i=1}^n f(t_i) \Delta x_i$$
+If $f$ is bounded, $$L(P,f)\leq \sigma\left(P,f,\left\{t_i\right\}\right) \leq U(P,f)$$
+\paragraph{Theorem} Let $f$ defined on $[a,b]$. It is integrable iff exists $I$ such that $\forall \epsilon > 0 \exists \delta > 0 $ such that for any partition $P$ that upholds $\lambda(P) < \delta$ and for any choice of points $$\left| \sigma\left(P,f,\left\{t_i\right\}\right) - I \right| < \epsilon $$
+In this case $I  = \int_a^b f(x) $ and it's the only number upholding the condition.
+\subparagraph{Proof}
+Suppose $f$ integrable (and then it's bounded). Let $\epsilon > 0$ then $\exists \delta > 0$ such that $\forall \lambda(P) < \delta$, $0 \leq U(P) - L(P) < \epsilon$. Let $\left\{t_i\right\}$ choice of points. Since $$L(P) \leq \int_a^b f(x)  \leq U(P)$$ and $$L(P) \leq \sigma\left(P,f,\left\{t_i\right\}\right) \leq U(P)$$
+$$\left| \sigma\left(P,f,\left\{t_i\right\}\right) -  \int_a^b f(x)  \right| \leq U(P) - L(P) < \epsilon$$
+This means that $\int_a^b f(x)  $ upholds the condition of I.
+Uniqueness: if $I^\prime$ also upholds the condition ($\left| \sigma\left(P,f,\left\{t_i\right\}\right) - I^\prime \right| < \epsilon $), then $I-I^\prime < \epsilon$, i.e. $I=I^\prime$.
+
+Now suppose exists $I$ that upholds the condition. First proof $f$ is bounded, so that Darboux sums exist.
+
+Take $\epsilon=1$ and $\delta > 0 $. Suppose $f$ isn't bounded and choose $P$ such that $\lambda(P) < \delta$. Exists $i$ such that $f$ isn't bounded on $\left[x_{i-1}, x_i\right]$. Lets choose $\left\{t_i\right\} \: j \neq i$. At interval $\left[x_{i-1}, x_i\right]$ we choose point $t$. Since $$\sigma\left(P,f,\left\{ t_j \right\}\right) < 1$$
+$$\sum_j f(t_j) \Delta x_j - I < 1$$
+$$\sum_{j\neq i} f(t_j) \Delta x_j + f(t) \Delta x_i < I + 1$$
+We can choose a sequence of $t$ such that $f(t_m) \to \infty$ and it's contradiction.
+
+Let $\epsilon > 0$ and $\delta > 0$ according to condition and $P$ is partition with $\lambda(P) < \delta$. Lets choose points $t_i$, $s_i$ such that 
+$$\left|f(s_i) - M_i\right| < \frac{\epsilon}{2(b-a)}$$
+$$\left|f(t_i) - m_i\right| < \frac{\epsilon}{2(b-a)}$$
+Then
+$$0 \leq \sigma\left( P, f, \left\{t_i \right\} \right) - L(P,f) < \frac{\epsilon}{2(b-a)} \cdot \sum \Delta x_i = \frac{\epsilon}{2}$$
+$$0 \leq U(P,f) - \sigma\left( P, f, \left\{t_i \right\} \right)  < \frac{\epsilon}{2}$$
+and also
+$$\left| \sigma\left(P,f,\left\{t_i\right\}\right) -  \int_a^b f(x)  \right|  < \epsilon$$
+$$\left| \sigma\left(P,f,\left\{s_i\right\}\right) -  \int_a^b f(x)  \right|  < \epsilon$$
+Then
+$$U(P,f)-L(P,f) < 3 \epsilon$$
+
+\paragraph{Theorem} Let f,g integrable on $[a,b]$ then
+\begin{enumerate}
+	\item $f+g$ integrable and $\int_a^b (f+g)  = \int_a^b f +\int_a^b g $
+	\item $cf$ is integrable of $c \in \mathbb{R}$ and $\int_a^b cf  = c\int_a^b f $
+	\item If $f \leq g$ on $[a,b]$ then $\int_a^b f  \leq \int_a^b g $
+\end{enumerate}
+\subparagraph{Proof} 
+Note: the theorem is right since 1-3 is right for Riemann sums.
+
+From previous theorem, given $\epsilon > 0$ exists $\delta > 0$ such that for any partition $\lambda(P) < \delta$ and for any choice of points $\left\{ t_i \right\}$
+$$\int_a^b f  - \sigma \left(P,f, \left\{ t_i \right\} \right) < \frac{\epsilon}{2}$$
+$$\int_a^b g  - \sigma \left(P,g, \left\{ t_i \right\} \right) < \frac{\epsilon}{2}$$
+Then
+$$\left| \int_a^b (f+g)  - \sigma \left(P,f+g, \left\{ t_i \right\}\right) \right| = \left| \int_a^b f  + \int_a^b g  - \sigma \left(P,f, \left\{ t_i \right\}\right) - \sigma \left(P,g, \left\{ t_i \right\}\right) \right| < \epsilon $$
+\paragraph{Theorem}
+\begin{enumerate}
+	\item If $f$ integrable on $[a,b]$, then it's integrable on each subinterval $[\alpha, \beta] \subseteq [a,b]$.
+\item If $a<c<b$ and $f$ integrable on $[a,c]$ and $[c,b]$ then $f$ is integrable on $[a,b]$ and $\int_a^b f  = \int_a^c f  + \int_c^b f $.
+\end{enumerate}
+\subparagraph{Proof}
+\begin{enumerate}
+	\item Let $\epsilon > 0$, exists partition $Q$ of $[a,b]$ such that $W(Q,f) < \epsilon$. Let $P$ partition that refines $Q$ by addition of $\alpha$ and $\beta$, then $W(P,f) \leq W(Q,f)$.
+
+Let $P^\prime$ partition of $[\alpha, \beta]$ which is acquired from points of $P$  which are contained in $[\alpha, \beta]$. Then $W(P^\prime, f) \leq W(P,f) < \epsilon$ 
+\item Suppose that $f$ is integrable on $a,c$ and $[c,b]$. For $\epsilon > 0$ exists $\delta > 0 $ such that for any $\lambda(P_1) < \delta$ partition of $[a,c]$ and choice of points $ \left\{ t_i \right\}$
+$$\left| \int_a^c f - \sigma (P_1, f, \left\{ t_i \right\}) \right| < \frac{\epsilon}{3}$$
+Similarly, for $[c,b]$
+$$\left| \int_c^b f - \sigma (P_2, f, \left\{ s_i \right\}) \right| < \frac{\epsilon}{3}$$
+
+Now lets take partition $P$ of $[a,b]$ with $\lambda(P)<\delta$. Refine it with addition of $c$ and acqire $P_c$ and choose points $ \left\{ z_i \right\}$ for it.	
+Then
+
+$$\sigma\left( P_c, f,  \left\{ z_i \right\} \right) = \sum_{i=1}^n f(z_i) \Delta x_i = \sum_{i=1}^k f(z_i) \Delta x_i + \sum_{i=k+1}^n f(z_i) \Delta x_i = \sigma\left( P_1, f,  \left\{ z_i \right\}_1^k \right) + \sigma\left( P_2, f,  \left\{ z_i \right\}_{k+1}^n \right)$$
+Since
+$$\left|\int_a^c f - \sigma\left( P_1, f,  \left\{ z_i \right\}_1^k \right) \right|< \frac{\epsilon}{3}$$
+$$\left|\int_c^b f - \sigma\left( P_2, f,  \left\{ z_i \right\}_{k+1}^n \right) \right| < \frac{\epsilon}{3}$$
+we get
+$$\left|\sigma\left( P_c, f,  \left\{ z_i \right\} \right) - \int_a^c f - \int_c^b f \right| < \frac{2\epsilon}{3}$$
+Returning to partition $P$, suppose $c < z_k < x_k$ and $P_c$ partition including $c$. Lets take same points $z_k$ for both, but at $x_{k-1}, c$ we choose $c$ as a point for $P_c$. Then
+\begin{align*}
+\bigg|\sigma\left( P_c, f,  \left\{ z_i \right\} \right) - \sigma\left( P, f,  \left\{ z_i \right\} \right) \bigg| = \bigg| \underbrace{(c-x_{k-1})f(c) + (x_k - c )f(z_k) }_{P_c} -\underbrace{ (x_k-x_{k-1})f(z_k)}_{P} \bigg| =\\= \bigg| \underbrace{(f(c) - f(z_k))}_{<M-m}\underbrace{(c-x_{k-1})}_{<\delta} \bigg| < \delta (M-m) < \frac{\epsilon}{3}
+\end{align*} 
+Which means
+$$\left|\sigma\left( P, f,  \left\{ z_i \right\} \right) - \int_a^c f - \int_c^b f \right| < \epsilon$$
+\end{enumerate}

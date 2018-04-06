@@ -1,0 +1,127 @@
+\paragraph{Limit arithmetics}
+Given $\lim_{x\to x_0} f(x) = L$ and $\lim_{x\to x_0} g(x) = M$:
+\begin{itemize}
+	\item $$\lim_{x\to x_0} (f+g)(x) =L+M$$
+	\item $$\lim_{x\to x_0} fg(x) = LM$$
+	\item  $$\lim_{x\to x_0} \frac{f}{g}(x) = \frac{L}{M}$$
+\end{itemize}
+\subsection{Directional Limits }
+$$\lim_{y \to y_0} \left(\lim_{x \to x_0} f(x,y)\right)$$
+\paragraph{Example}
+$$f(x,y) = \frac{x-y}{x+y}$$
+
+$$\lim_{y \to y_0} \left(\lim_{x \to x_0} f(x,y)\right) = -1$$
+$$\lim_{x \to x_0}\left( \lim_{y \to y_0}  f(x,y)\right) = 1$$
+
+
+We can show that limit doesn't exists by looking on sequence $\left(\frac{1}{n}, \frac{\lambda}{n}\right)$:
+$$f\left(\frac{1}{n}, \frac{\lambda}{n}\right) = \frac{1-\lambda}{1+\lambda}$$
+depends on $\lambda$ and thus $\lim_{(x,y) \to (x_0, y_0)}  f(x,y)$ doesn't exists.
+\paragraph{Sentence} If exists $\lim_{(x,y) \to (x_0,y_0)} f(x,y) = L$ and for any $y$ in the neighborhood of $y_0$ exists $\phi(y) = \lim_{x\to x_0} f(x,y)$ then
+$$L = \lim_{y\to y_0} \left( \lim_{x \to x_0} f(x,y) \right)$$
+\subparagraph{Proof}
+Let $\epsilon >0$. $\exists \delta > 0$ such that if $0 < d_\infty((x,y), (x_0,y_0)) < \delta$ (i.e. $|y-y_0| < \delta $ and $|x-x_0|<\delta$ and $(x,y)\neq (x_0,y_0)$) then $\left|f(x,y)-L\right| < \frac{\epsilon}{2}$.
+Choose $\delta$ small enough such that $\phi$ is defined on $(y_0-\delta,y_0+\delta)$.
+
+Then $\forall y \: |y-y_0| < \delta$ $\exists \delta_y > 0$ such that if $\delta_y > |x-x_0| > 0$ then $\left|f(x,y) - \phi(y) \right|<  \frac{\epsilon}{2}$. We can suppose $\delta_y < \delta $. That means that
+$$\left|\phi(y) - L\right| < \left| \phi(y) - f(x,y) \right| + \left| f(x,y)-L \right|< \frac{\epsilon}{2}+ \frac{\epsilon}{2}  =\epsilon $$
+\section{Continuousness}
+$f$ is continuous if it is defined in neighborhood of $x^0$  and
+$$\lim_{x\to x^0} f(x) = f(x^0)$$.
+
+$f$ is continuous on $D$ if it is continuous in every $x\in D$.
+
+\paragraph{Function composition}
+
+$$f: \mathbb{R}^n \to \mathbb{R}$$
+$$g: \mathbb{R} \to \mathbb{R}$$
+$$h: [a,b] \to \mathbb{R}^n$$
+
+$$f\circ h: \mathbb{R} \to \mathbb{R}$$
+$$g\circ f: \mathbb{R}^n \to \mathbb{R}$$
+
+\paragraph{}
+Let $h: [a,b] \to \mathbb{R}^n$. Then exist functions $h_1, h_2, \dots h_n$ such that
+$$h(t) = \big( h_1, h_2, \dots, h_n \big)$$
+$h$ is called  continuous if each of $h_i$ continuous.
+
+
+\paragraph{Sentence}
+If $f,g,h$ continuous, then $g\circ f$ and $f\circ h$ continuous.
+
+\paragraph{Examples (in $\mathbb{R}^2$)}
+\begin{enumerate}
+	\item Polynomial is continuous
+	$$p(x,y) = a_0 + a_1x +a_2y +a_3x^2 + a_4xy +a_5y^2 + \dots$$
+	\item Every rational function is continuous
+\end{enumerate}
+
+\paragraph{Intermediate value theorem}
+Let $f$ continuous defined on interval $D$ and let $x,y \in D$ such that $f(x) < \alpha < f(y)$. Then exists $z \in D$ such that $f(z) = D$.
+
+\subparagraph{Proof}
+Exists polygonal chain connecting $x$ and $y$ in D. Denote vertexes as $x^1, x^2, x^3, \dots, x^m$. 
+
+$\exists i\leq k$ such that $f(x^i) < \alpha < f(x^{i+1})$ (if $f(x^i) = \alpha$ we are finished).
+
+Then take a look on interval $[x^i, x^{i+1}] = \big\{ (1-t)x^i +tx^{i+1} : 0\leq t\leq 1\big\}$
+and define $s(t) = f((1-t)x^i +tx^{i+1} )$. $k: [0,1] \to \mathbb{R}$. Since $k(0)< \alpha < k(1)$ from intermediate value theorem for single variable, $\exists t$ such that $k(t) = \alpha$.
+\paragraph{Sentence}
+If $f$ is continuous in closed bounded set then $f$ is bounded and acquires its minimum and maximum on set.
+\paragraph{Definition}
+$f$ is uniformly continuous if $\forall \epsilon > 0 $ $\exists \delta(\epsilon) = \delta > 0$ such that if $d(x,y) < \delta$ then $\left|f(x)-f(y)\right| < \epsilon$.
+\paragraph{Sentence}
+If $f$ is continuous in closed bounded set then $f$ is  uniformly continuous.
+
+\section{Derivative in $\mathbb{R}^n$}
+\subsection{Partial derivative}
+Partial derivative of $f$ by $x$ in $(x_0,y_0)$ is a limit (if exists)
+$$f_x = \frac{\partial f}{\partial x} = \lim_{h \to 0} \frac{f(x_0+g, y_0)-f(x_0,y_0)}{h}$$
+\paragraph{Example}
+$$f(x,y) = \cos (x^2y^3)$$
+$$\frac{\partial f}{\partial x} = -2y^3x \cdot -\sin(x^2y^3)$$
+$$\frac{\partial f}{\partial y} = -3x^2y^2 \cdot -\sin(x^2y^3)$$
+\paragraph{Example}
+$$f(x,y)  =\begin{cases}\frac{xy}{x^2+y^2}& (x,y)\neq (0,0)\\0&(x,y)=(0,0)
+\end{cases}$$
+$$\frac{\partial f}{\partial x} (0,0) = 0$$
+$$\frac{\partial f}{\partial y} (0,0) = 0$$
+Exist partial derivatives in $(0,0)$ even though $f$ is not continuous there.
+\paragraph{Reminder}
+$y=f(x)$.
+Tangent line is
+$$z = f(x_0) + A(x-x_0)$$
+such that
+$$\frac{f(x)-z}{x-x_0} \stackrel{x \to x_0}{\to} 0$$
+$f$ has tangent line in $(x_0, f(x_0))$ if we can write 
+$$f(x) = f(x_0) +A(x-x_0) + \epsilon(x-x_0)$$
+$$\frac{\epsilon(x-x_0)}{x-x_0} \stackrel{x \to x_0}{\to} 0$$
+If tangent line exists
+$$\frac{f(x) - f(x_0)}{x-x_0} = A  + \frac{\epsilon(x-x_0)}{x-x_0} \to A$$
+then derivative exists and $f^\prime(x_0) = A$ and tangent line is
+$$z = f(x_0) + f^\prime(x_0)(x-x_0)$$
+\paragraph{Tangent plane}
+Tangent plane via $(x_0, y_0, f(x_0, y_0))$
+$$z = f(x_0, y_0)+A(x-x_0)+B(y-y_0)$$
+\paragraph{Definition}
+$f(x,y)$ is differentiable in $(x_0,y_0)$ if exist constants $A$,$B$ and function $\epsilon(s,t)$ such that
+$$f(x_0+\Delta x,y_0+\Delta y) = f(x_0,y_0)+A\Delta x + B\Delta y + \epsilon(\Delta x, \Delta y)$$
+and
+$$\frac{\epsilon(\Delta x, \Delta y)}{\sqrt{\Delta x^2+\Delta y^2}} \stackrel{\Delta x \to 0, \Delta y \to 0}{\to} 0$$
+
+Suppose that $f$ is differentiable in $x_0, y_0$ and take $\Delta y = 0$:
+$$f(x_0+\Delta x,y_0) = f(x_0,y_0)+A\Delta x + \epsilon(\Delta x,0)$$
+$$\frac{\epsilon(\Delta x, 0)}{\Delta x} \stackrel{\Delta x \to 0}{\to} 0$$
+$$\frac{f(x_0+\Delta x, y_0) - f(x_0,y_0)}{\Delta x} = A + \frac{\epsilon(\Delta x, 0)}{\Delta x}$$
+i.e. $A = \frac{\partial f}{\partial x}(x_0, y_0)$. Same can be done for $B$.
+
+Then
+$$z = f(x_0,y_0) + \frac{\partial f}{\partial x}(x_0, y_0)(x-x_0)+ \frac{\partial f}{\partial y}(x_0, y_0)(y-y_0)$$
+is tangent plane.
+\paragraph{Claim}
+$f$ is differentiable in $(x_0,y_0)$ $\iff$ exist functions $\alpha(\Delta x, \Delta y)$ and $\beta(\Delta x, \Delta y)$ such that
+$$f(x+\Delta x, y+\Delta y) = f(x_0, y_0)+A\Delta x + B\Delta y + \alpha(\Delta x, \Delta y)\Delta x + \beta(\Delta x, \Delta y)\Delta y$$
+\paragraph{Proof}
+$\Leftarrow$
+$$\epsilon\left( \Delta x, \Delta y \right) =  \alpha(\Delta x, \Delta y)\Delta x + \beta(\Delta x, \Delta y)\Delta y$$
+$$\frac{\epsilon\left( \Delta x, \Delta y \right) }{\sqrt{\Delta x^2+ \Delta y^2}} = \alpha\left( \Delta x, \Delta y \right)  \cdot \underbrace{\frac{\Delta x}{\sqrt{\Delta x^2+ \Delta y^2}}}_{\leq 1} +  \beta\left( \Delta x, \Delta y \right)  \cdot \underbrace{\frac{\Delta y}{\sqrt{\Delta x^2+ \Delta y^2}}}_{\leq 1} \to 0$$

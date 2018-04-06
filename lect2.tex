@@ -1,0 +1,44 @@
+\paragraph{Theorem} If $f$ is monotonic on $[a,b]$ than it's integrable.
+\subparagraph{Proof} Suppose without loss of generality that $f$ is non-decreasing.
+It's obvious that $f$ in bounded: $\forall x \: f(a)\leq f(x) \leq f(b)$.
+
+For partition $P$, $m_i = f(x_{i-1})$ and $M_i = f(x_i)$.
+
+$$W(P) = U(P,f) - L(P,f) = \sum \left( f(x_i) - f(x_{i-1}) \right) \Delta x_i $$
+
+For $\epsilon > 0$ lets take $\delta = \frac{\epsilon}{f(b)-f(a)}$.
+
+If $\delta > \lambda(P) \Rightarrow \forall \Delta x_i <  \frac{\epsilon}{f(b)-f(a)}$ and 
+$$W(P) \leq \frac{\epsilon}{f(b)-f(a)} \sum \left( f(x_i) - f(x_{i-1}) \right) = \frac{\epsilon}{f(b)-f(a)}  \cdot \left(f(b)-f(a)\right) = \epsilon$$
+Meaning $f$ is integrable.
+\paragraph{Theorem} If $f$ is continuous on $[a,b]$ than it's integrable.
+\subparagraph{Proof} Since $f$ is continuous on a closed interval it's uniformly continuous $\Rightarrow \forall \epsilon > 0 \exists \delta > 0 $ such that if $|x-y| < \delta$ then $|f(x)-f(y)| < \epsilon$.
+
+Lets choose $\epsilon > 0 $ and $\delta > 0 $ such that if $\delta > |x-y| \Rightarrow \frac{\epsilon}{b-a} > |f(x)-f(y)|$.
+
+Suppose $P$ partition with $\lambda(P) < \delta$
+From uniform continuousness $\forall i M_i-m_i \leq \frac{\epsilon}{b-a}$ then $$U(P)-L(P) = \sum (M_i-m_i) \Delta x_i \leq \frac{\epsilon}{b-a} \sum \Delta x_i = \epsilon$$
+
+\paragraph{Theorem} If $f$ is continuous on $[a,b]$  except finite number of points  than it's integrable.
+\subparagraph{Proof} 
+Let $\epsilon > 0$. Suppose $f(x)$ has $k$ non-continuous points. Choose $\delta_1 = \frac{\epsilon}{8(M-m)k}$.
+
+Denote $A = [a,b] \setminus \bigcup (t_i-\delta_1, t_I+\delta_1)$, where $t_1 \dots t_i$ - points of non-continuousness.
+
+$A$ is finite union of closed intervals and $f$ is continuous on each of them. Exists $\delta_2 > 0$ such that if $|x-y| < \delta_2$ and $[x,y] \in A$ then $|f(x)-f(y)| < \frac{\epsilon}{2(b-a)}$. Denote $\delta = min(\delta_1, \delta_2)$ and let $P$ is partition such that $\lambda(P) < \delta$.
+$$U(P)-L(P) = \sum_{i=1}^{n} (M_i-m_i) \Delta x_i = \sum^\prime \parbox{2cm}{\centering \scriptsize intervals contained in A} +  \sum^{\prime\prime} \parbox{2cm}{\centering \scriptsize intervals non contained in A} $$
+Lets approximate both sums. First one is simple:
+$$\sum^\prime \stackrel{\scriptsize M_i-m_i \leq \frac{\epsilon}{2(b-a)}}{\leq} \frac{\epsilon}{2(b-a)}(b-a) = \frac{\epsilon}{2}$$
+For the second one, total length of all intervals around each non-continuous point is less than $4\delta_1$:
+$$\sum^{\prime\prime} \leq (M_i-m_i)\sum^{\prime\prime} \Delta x_i < (M_i-m_i) \cdot 4\delta_1 k = \frac{\epsilon}{2}$$
+Then 
+$$U(P)-L(P) < \epsilon$$
+\paragraph{Examples}
+$$f(x) = \begin{cases}
+\sin^2(1/x)&x\leq=0\\ 0&x=0
+\end{cases}$$
+is integrable on $[-1,1]$.
+$$f(x) = \begin{cases}
+1-\frac{1}{2^{n-1}}&\frac{1}{2^{n-1}}\leq x < \frac{1}{2^{n}}\\1&x=1
+\end{cases}$$
+is integrable since it's monotonic.

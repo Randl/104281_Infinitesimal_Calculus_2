@@ -1,0 +1,72 @@
+\paragraph{Sentence}
+Let $f$ continuous on $[a,b] \times [\alpha, \beta]$ then
+$$\int_a^b \left[\int_\alpha^\beta f(x,y) dy\right] dx = \int_\alpha^\beta\left[\int_a^b  f(x,y) dx\right] dy$$
+\subparagraph{Proof}
+$$\alpha \leq t \leq \beta \: \phi(t)  = \int_{\alpha}^{t} \left[ \int_a^b f(x,y) dx \right]dy$$
+$$\alpha \leq t \leq \beta \: \psi(t)  =\int_a^b  \left[ \int_{\alpha}^{t} f(x,y) dy \right]dx$$
+It should be that $\phi(\beta) = \psi(\beta)$. Lets show that $\phi = \psi$ by showing that
+$$\phi^\prime (t) = \psi^\prime(t)$$
+Since $\phi(\alpha) = \psi(\alpha) = 0$, that would mean functions are equal.
+$$\phi^\prime (t) = \int_a^b f(x,t) dx$$
+To calculate derivative of $\psi$ denote
+$$g(x,t) = \int_{\alpha}^{t} f(x,y) dy$$
+$$\phi = \int_a^b g(x,t) dx$$
+$g$ is continuous and $\frac{\partial g}{\partial y} = f(x,t)$ is continuous too. Thus
+$$\psi^\prime (t) = \int_a^b \frac{\partial g}{\partial y} dx = \int_a^b f(x,t) dx = \phi^\prime(t)$$
+\paragraph{Example}
+$$\int_0^1\int_0^1 (x^2+y)dydx = \int_0^1 \left[x^2y+\frac{1}{2}y^2\right]^{y=1}_{y=0}dx = \int_0^1 x^2+\frac{1}{2} dx = \left[\frac{1}{3}x^3+\frac{1}{2}x\right]_0^1 = \frac{5}{6}$$
+$$\int_0^1\int_0^1 (x^2+y)dxdy = \int_0^1 \left[\frac{1}{3}x^3+yx\right]^{x=1}_{x=0}dy = \int_0^1 \frac{1}{3} + y dy = \left[\frac{1}{3}y+\frac{1}{2}y^2\right]_0^1 = \frac{5}{6}$$
+\paragraph{Example}
+$$\int_0^1 \frac{x^3-x^2}{\log x} dx$$
+$$x^y = e^{y\log x}$$
+$$\int x^y dy= \frac{e^{y\log x}}{\log x} = \frac{x^y}{\log x} $$
+$$\frac{x^3-x^2}{\log x}  =\int_2^3 x^y dy$$
+$$\int_0^1 \int_2^3 x^y dy dx =\int_2^3 \int_0^1  x^y  dx dy = \int_2^3  \left[\frac{1}{y+1}x^{y+1}\right]_{x=0}^{x=1}  dy = \int_2^3  \frac{1}{y+1}  dy = \left[\ln (y+1)\right]_2^3 = \ln \frac{4}{3}$$
+
+\subsection{Double integral}
+$f(x,y)$ defined and bounded on rectangle $R=[a,b]\times [c,d]$.
+
+Partition of $R$ is
+$$a = x_0 < x_1 < \dots < x_n  = b$$
+$$c = y_0 < y_1 < \dots < y_m  = d$$
+$$\Delta_{x_i} = x_i - x_{i-1} \quad \Delta_{y_i} = y_i - y_{i-1}$$
+
+$$\Delta_{ij} = \Delta_{x_i} \Delta_{y_j}$$
+$$M_{ij} = \sup\limits_{\Delta ij} f \quad m_{ij} = \inf\limits_{\Delta ij} f$$
+Darboux sums are
+$$U(P,f) = \sum_{i,j} M_{ij} \Delta_{ij}$$
+$$L(P,f) = \sum_{i,j} m_{ij} \Delta_{ij} \leq U(P,f)$$
+\paragraph{Definition}
+$f$ is integrable on $R$ if $$\iint\limits_{R} f(x,y) dA = \sup\limits_{P} L(P,f) = \inf\limits_{P} U(P,f)$$
+\paragraph{Sentence}
+$f$ integrable $\iff$ $f$ is bounded and $\forall \epsilon > 0$ exists partition $P$ such that $U(P,f) - L(P,f) < \epsilon$ $\iff$ $\forall \epsilon > 0 \exists \delta >0$ such that if $\lambda(P) = \max(\Delta_{x_i}, \Delta_{y_j}) < \delta$ then  $U(P,f) - L(P,f) < \epsilon$ 
+\paragraph{Sentence}
+$f$ is integrable $\iff \:\exists I \:  \forall \epsilon > 0 \exists \delta > 0 \: \forall \lambda(P) < \delta \forall \left\{ t_{ij} \right\} \: \left|\sigma(P,f, \left\{ t_{ij} \right\} ) - I\right| < \epsilon$
+\paragraph{Sentence} $f$ is continuous on $R$ then $f$ is integrable there.
+\paragraph{Definition} Set $E\subseteq \mathbb{R}^2$ is called \textit{of area 0} if $\forall \epsilon 0$ exist (open) rectangles $\left\{ R_k \right\}_{k=1}^\infty$ such that $E \subseteq \bigcup_{k=1}^\infty R_k$ and sum of areas of $R_k$ is less than $\epsilon$.
+\subparagraph{Note 1} If $E$ is of area 0 and closed and bounded then $\forall \epsilon > 0$ then exist (open) rectangles $\left\{ R_k \right\}_{k=1}^m$ such that $E \subseteq \bigcup_{k=1}^m R_k$ and sum of areas of $R_k$ is less than $\epsilon$.
+\subparagraph{Note 2} If $f: [a,b]\to[c,d]$ continuous then its graph has area 0. From uniform continuousness $\forall \epsilon > 0 \exists \delta > 0 $ such that if $|x-y|<\delta$ then $f(x)-f(y) < \frac{\epsilon}{2}$. Let's cover $[a,b]$ with overlapping intervals $<\delta$. For each interval $I_k$ take rectangle
+$$R_k = I_k \times \left(\inf\limits_{I_k} f-\frac{\epsilon}{4}, \sup\limits_{I_k} f+\frac{\epsilon}{4} \right)$$
+\subparagraph{Note 3} If $E_1, E_2,\dots E_m$ are of area 0, then also $\bigcup_{k=1}^{m} E_k$.
+\paragraph{Sentence} If $f$ is bounded in $R$ continuous there except set $E$ of area 0 which is closed and bounded then $f$ is integrable in $R$.
+\subparagraph{Proof}
+Let $\epsilon > 0$ and
+$$E \subseteq \bigcup_{k=1}^{n} R_k$$
+such that $R$ are open rectangles.
+$f$ is continuous on $R \setminus \bigcup_{k=1}^{n} R_k$ is bounded and closed then $f$ is uniformly continuous (i.e. $\exists \delta \forall \epsilon \: d_{\infty}(x^1, x^2) < \delta \Rightarrow |f(x^1) - f(x^2)| < \epsilon$).
+
+Define partition $P$ of $R$ as follows:
+\begin{enumerate}
+	\item Prolong each side of $R_k$ i.e. take $x_{k1}, x_{k2}$ and $y_{k1}, y_{k2}$ for each $k$.
+	\item Add points to $P$ such that $\lambda(P) < \delta$.
+\end{enumerate}
+
+Denote all subrectangles as $\left\{ R_{ij} \right\}$.
+Denote 
+$$A_0 = \left\{ (i,j) | R_{ij} \subseteq \bigcup^n R_k \right\}$$
+$$A_1 = \left\{ (i,j) | R_{ij} \not\subseteq \bigcup^n R_k \right\}$$
+$$U(P,f) - L(P,f) = \sum_{i,j} (M_{ij} - m_{ij})\Delta_{ij} = \sum_{(i,j) \in A_0} + \sum_{(i,j) \in A_1}$$
+$$0 \leq \sum_{(i,j) \in A_0} \: (M_{ij} - m_{ij}) \Delta_{ij} \leq \sum_{(i,j) \in A_0} (|M_{ij}| + |M_{ij}) \Delta_{ij} \leq 2M\Delta_{ij} \leq 2M \cdot \underbrace{\bigcup_{k=1}^n R_k}_{area} < 2M\epsilon$$
+($\exists M > |f|$)
+$f$ is continuous, thus for $A-1$ $M_{ij} = f(p_{ij})$ and $m_{ij} = f(q_{ij})$ 
+$$0 \leq \sum_{(i,j) \in A_1} (M_{ij} - m_{ij}) \Delta_{ij} = \sum \left(f(p_{ij}) -f(q_{ij})\right)\Delta_{ij} \leq \sum_{(i,j) \in A_1} \epsilon \Delta_{ij} \leq \epsilon R$$

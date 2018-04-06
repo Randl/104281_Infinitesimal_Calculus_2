@@ -1,0 +1,92 @@
+\section{Connection between definite integral and antiderivative}
+Let function integrable Riemann on $[a,b]$ and $F(x) = \int_a^b f(t) dt$
+\paragraph{Theorem} F is continuous on $[a,b]$
+\paragraph{Theorem} Let $f$ integrable on $[a,b]$ and continuous in $x_0 \in [a,b]$ then $F$ is derivable in $x_0$ and $F^\prime(x_0) = f(x_0)$. If $x_0$ is one of endpoints, derivative will be one-sided.
+\subparagraph{Proof}
+Suppose $x_0 \in [a,b)$. For all $b>x>x_0$ $$F(x)-F(x_0) = \int_a^x-f dt - \int_a^{x_0} f dt = \int_{x_0} f(t) dt$$
+$f$ is continuous in $x_0$: for any $\epsilon > 0$ exists $\delta > 0$ such that if $|x-x_0| < \delta$ $|f(x)-f(x_0)| < \epsilon$. That means 
+$$f(x_0) - \epsilon < f(x) < f(x_0) + \epsilon$$
+From monotonousness of integral:
+$$(f(x_0)-\epsilon)(x-x_0) = \int_{x_0}^x (f(t)-\epsilon) dt \leq \underbrace{\int_{x_0}^x f(t) dt}_{F(x)-F(x_0)} \leq \int_{x_0}^x (f(t) +\epsilon) dt = (f(x)+\epsilon)(x-x_0)$$ 
+Suppose $x>x_0$
+$$f(x_0) -\epsilon \leq \frac{F(x)-F(x_0)}{x-x_0} \leq f(x_0)+ \epsilon$$
+That means that for any $\epsilon > 0$ exists $\delta > 0$ such that if $x_0+\delta > x > x_0$ then
+$$f(x_0) -\epsilon \leq \frac{F(x)-F(x_0)}{x-x_0} \leq f(x_0)+ \epsilon$$
+$$\lim_{x\to x_0^+} \frac{F(x)-F(x_0)}{x-x_0} = f(x_0)$$
+In a similar way we can show that for $x \in (a,b]$
+$$\lim_{x\to x_0^-} \frac{F(x)-F(x_0)}{x-x_0} = f(x_0)$$
+It means for $x \in (a,b)$
+$$F^\prime(x_0) = \lim_{x\to x_0}\frac{F(x)-F(x_0)}{x-x_0} = f(x_0)$$
+\paragraph{Conclusion}
+If $f$ is continuous on $[a,b]$ then $F$ is derivable there and $$F^\prime(x) = f(x)$$
+\paragraph{Reminder} Antiderivative, if exists, is unique.
+\paragraph{Theorem} If $f$ is continuous on $[a,b]$ and $G$ is antiderivative of $f$, then $$\int_a^b f(t) dt = G(b) -G(a)$$
+\subparagraph{Proof}
+$$\int_a^b f(t) dt =F(b) - F(a) = G(b) -G(a)$$
+\subsection{Integration by parts}
+$$\int uv^\prime dx = uv - \int vu^\prime dx$$
+$$\int_a^b uv^\prime dx = \left[ uv - \int vu^\prime dx \right]_a^b = \left[ uv \right]_a^b - \int_a^b vu^\prime dx$$
+\paragraph{Example}
+$$\int_1^e x \ln x dx = \left[\frac{x^2 \ln x}{2}\right]_1^e - \int_1^e \frac{x^2}{2}\cdot \frac{1}{x} dx = \frac{1}{2}e^2 - 0 - \left[ \frac{1}{4}x^2 \right]_1^e = \frac{1}{2}e^2 - \frac{1}{4}e^2 + \frac{1}{4} = \frac{1}{4} \left( e^2 + 1 \right) $$
+\subsection{Integration by substitution}
+Suppose $F^\prime = f $ and $g$ derivable function such that $f\circ g$ and $F \circ g$ are defined. Then
+$$\int f(g(x)) g^\prime(x) dx = F(g(x)) + C$$
+\paragraph{Definite integral}
+Suppose $g$ is defined and continuously derivable on $I$. Let $f$ continuous on $I$   with antiderivative $F$ . Then
+$$\int_a^b f(g(x)) g^\prime(x) dx = \left[ F(g(x))\right]_a^b = \int_{g(a)}^{g(b)} f(t) dt$$ 
+\paragraph{Example}
+$$\int_0^{\frac{\pi}{2}} \sin^2 x \cos x dx =\left[ \frac{1}{3} \sin^3 x\right]_0^{\frac{\pi}{2}} = \int_0^1 t^2 dt = \left[ \frac{1}{3} y^3 \right]_0^1 = \frac{1}{3}$$
+$g(x) = \sin x$, $f(x) = x^2$, $F(x) = \frac{1}{3} x^3$
+\section{Improper integrals}
+Until now we discussed only integrals of bounded functions on finite intervals. What happens with unbounded functions or on infinite interval?
+\paragraph{Interval $[a, \infty)$}
+Let f defined on $[a,\infty)$ and integrable on $[a,c]$ for any $c>a$. we say that improper integral of $f$ exists (or $f$ integrable on  $[a,\infty)$) if $$\lim_{c\to \infty} \int_a^c f(x) dx$$ exists and finite. At this case we denote $$\int_a^\infty f(x) dx = \lim_{c\to \infty} \int_a^c f(x) dx$$
+\paragraph{Example}
+$f(x) = \frac{1}{x^\alpha}$, $\alpha \in \mathbb{R}$ on $[1, \infty)$.
+$$\int_1^\infty \frac{1}{x^\alpha} dx = ?$$
+\subparagraph{Solution}
+$$\int_1^\infty \frac{1}{x^\alpha} dx = \begin{cases}
+[\ln x]_1^c = \ln c &\alpha = 1 \\
+\left[\frac{1}{(1-\alpha)}x^{1-\alpha}\right]_1^c = \frac{1}{(1-\alpha)}\left(c^{1-\alpha}-1\right) & \alpha \neq 1
+\end{cases}$$
+If $\alpha = 1$, since $\lim_{x \to infty} \ln x  = \infty$, integral doesn't exists.
+Similarly, it doesn't exists if $\alpha < 1$.
+If $\alpha > 1$
+$$\lim_{c \to \infty} \int_1^c \frac{1}{x^\alpha} dx = - \frac{1}{1-\alpha} = \frac{1}{\alpha - 1}$$
+That means that
+$$\int_1^\infty \frac{1}{x^\alpha} dx = \frac{1}{\alpha -1}$$
+\paragraph{Example}
+$$\int_0^\infty \sin x dx = \lim_{c \to \infty} \int_0^c \sin x dx = \lim_{c \to \infty} \left[-\cos x \right]_0^c =  \lim_{c \to \infty} \left( \cos c + 1 \right)$$
+limit doesn't exist.
+
+\paragraph{Interval $(-\infty,a]$}
+
+Let f defined on $(-\infty,a]$ and integrable on $[c,a]$ for any $c<a$. we say that improper integral of $f$ exists (or $f$ integrable on  $(-\infty,a]$) if $$\lim_{c\to -\infty} \int_c^a f(x) dx$$ exists and finite. At this case we denote $$\int_{-\infty}^a f(x) dx = \lim_{c\to -\infty} \int_c^a f(x) dx$$
+\paragraph{Example}
+$$\int_{-\infty}^{0} e^x dx = \lim_{c \to -\infty} \int_{c}^{0} e^x dx = \lim_{c \to -\infty}  \left[ e^x \right]_c^0 = \lim_{c \to -\infty}  1 - e^c = 1$$
+
+
+\paragraph{Interval $(-\infty,\infty)$}
+
+$\int_{-\infty}^{\infty} f(x) dx$ exists if both $\int_{a}^{\infty} f(x) dx$  and $\int_{-\infty}^{a} f(x) dx$  exist for some a. In this case
+$$\int_{-\infty}^{\infty} f(x) dx = \int_{a}^{\infty} f(x) dx + \int_{-\infty}^{a} f(x) dx$$
+\paragraph{Example}
+$$\int_{-\infty}^{\infty}  \sin x dx$$
+doesn't exist, as shown earlier.
+
+However, if we'd take $$\lim_{c\to \infty} \int_{-c}^{c} \sin x dx = \lim_{c\to \infty} -\cos c + \cos (-c) = 0$$
+$\lim_{c\to \infty} \int_{-c}^{c} f(x) dx$, if exists, is called principal value.
+\paragraph{Unbounded function}
+Let $f$ defined on $[a,b)$ and integrable on $[a,c]$ for all $a<c<b$. We say that $f$ is integrable on $[a,b)$ if $\lim_{c\to b} \int_a^c f(x) dx $ exists and finite. We denote
+$$\int_a^b f(x) dx = \lim_{c\to b} \int_a^c f(x) dx$$
+
+Similarly, let $f$ defined on $(a,b]$ and integrable on $[c,b]$ for all $a<c<b$. We say that $f$ is integrable on $(a,b]$ if $\lim_{c\to a} \int_c^b f(x) dx $ exists and finite. We denote
+$$\int_a^b f(x) dx = \lim_{c\to a} \int_c^b f(x) dx$$
+\paragraph{Exercise} Let $f$ bounded on $[a,b]$ and integrable on $[a,c]$ for all $a<c<b$. Proof that $f$ is integrable on $[a,b]$ and $$\int_a^b f(x) dx= \lim_{c\to b} \int_a^c f(x) dx$$
+\paragraph{Example}
+$$\int_0^1 \frac{1}{x^\alpha}dx$$
+$$\int_c^1 \frac{1}{x^\alpha}dx = \begin{cases}
+\left[\ln x\right]_0^1 = -\ln c & \alpha = 1 \\
+\frac{1}{1-\alpha}\cdot (1-c^{1-\alpha})&\alpha \neq 1
+\end{cases} $$
+Integral exists only if $\alpha <1$.

@@ -1,0 +1,101 @@
+\section{Improper integrals}
+Let $D$ set in $\mathbb{R}$ whose boundary is of area 0 and $f$ defined and continuous on $D$ except maybe set of area 0. (Neither $D$ nor $f$ must be bounded).
+
+Lets try take
+$$D_1 \subseteq D_2 \subseteq D_3 ...$$
+$$D = \bigcup D_i$$
+Define
+$$\iint\limits_D f = \lim_{i \to \infty} \iint\limits_{D_i} f$$
+\paragraph{Example}
+$$f = \begin{cases}
+-1&y>x\\1&y\leq x
+\end{cases}$$
+For two different $D_i$: $D_n = [0,n] \times [0,2n]$ and $D^\prime_n = [0,n]^2$:
+$$\iint\limits_{D_n} f = -n^2 \to \infty$$ 
+$$\iint\limits_{D^\prime_n} f = 0 \to 0$$
+\paragraph{Example} 
+$$f = \begin{cases}
+\frac{1}{\sqrt{2}}(x+y)&y>x\\-x&y\leq x
+\end{cases}$$
+$$D_n = =[0,n]^2$$
+$$D^\prime_n = \left\{ (x,y), x\geq 0, y \geq 0, x^2+y^2\leq n^2  \right\}$$
+$$\iint_{D_n} = -\iint\limits_{L_n} +\frac{1}{\sqrt{2}}\iint\limits_{U_n}$$
+$$I_L = \int_0^n \int_0^x x dy dx= \int_0^n \left[xy\right]_{y=0}^{y=x} dx = \int_0^n x^2 dx = \frac{n^3}{3}$$
+$$I_U  = \frac{1}{\sqrt{2}} \int_0^n \int_x^n (x+y) dx = \frac{1}{\sqrt{2}} \int_0^n \left[ xy+\frac{y^2}{2} \right]_{y=x}^{y=n} dx = \frac{1}{\sqrt{2}} \int_0^n nx+\frac{n^2}{2}+\frac{3x^2}{2}dx = \frac{1}{\sqrt{2}} \left[ \frac{nx^2}{2}+\frac{n^2x}{2}+\frac{x^3}{2}\right]_0^n = \frac{1}{2\sqrt{2}}n^3$$
+
+Lets show that $\iint\limits_{D_n^\prime} f = 0$. Or in other words
+$$\iint\limits_{U_2} f= - \iint\limits_{L_2} f$$
+$$\iint\limits_{U_2} \frac{1}{\sqrt{2}}(x+y)= \iint\limits_{L_2}x$$
+Define $\phi: L_2 \to U_2$ as rotation by $\frac{\pi}{4}$
+$$\phi\begin{pmatrix} x\\y \end{pmatrix} = \begin{pmatrix} \frac{1}{\sqrt{2}}&-\frac{1}{\sqrt{2}}\\\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}} \end{pmatrix} \begin{pmatrix} x\\y \end{pmatrix} = \begin{pmatrix} \frac{1}{\sqrt{2}}(x-y)\\\frac{1}{\sqrt{2}}(x+y) \end{pmatrix} $$
+$$\phi(s,t) = \left(\frac{1}{\sqrt{2}}(s-t),\frac{1}{\sqrt{2}}(s+t)\right)$$
+$$\iint\limits{U_2} \frac{1}{\sqrt{2}} (x+y) = \iint\limits_{L_2} \frac{1}{\sqrt{2}}\left(\frac{1}{\sqrt{2}}(s-t)+\frac{1}{\sqrt{2}}(s+t)\right) = \iint\limits_{L_2} s$$
+\paragraph{Definition}
+Suppose $f\geq 0$.  Then if $D_1 \subseteq D_2 \subseteq D$
+$$\iint\limits_{D_2} f \geq \iint\limits_{D_1} f$$
+Define
+$$\iint\limits_{D} f = \sup \left\{ \iint\limits_{B}, f_B, B \:- \:bounded \right\}$$
+$f$ is integrable on $D$ if
+$\iint\limits_{D} f$ is finite.
+\paragraph{Sentence}  Under those conditions if $f$ is integrable and let $A_1 \subseteq A_2 \subseteq \dots \subseteq D$ closed bounded sets with boundary of area 0 such that $f_{A_n}$ bounded for all $n$ such that $\forall B \subseteq D \exists n \: B \subseteq A_n$ then
+$$\iint\limits_D = \lim_{n \to \infty} \iint\limits_{A_n} f$$
+
+And vice versa: if $A_n$ sequence as in previous paragraph, and exists finite
+$$\lim_{n \to \infty} \iint\limits_{A_n} f$$
+then $f$  is integrable and
+$$\iint\limits_D = \lim_{n \to \infty} \iint\limits_{A_n} f$$
+\subparagraph{Proof}
+For such $A_n$
+$$\iint\limits_{A_n} f \leq \iint\limits_{A_{n+1}} f $$
+$$\lim_{n \to \infty} \iint\limits_{A_n} f$$
+exists since it's monotonous sequence.
+Suppose $f$ is integrable. Then $\forall \epsilon>0 \exists B \subseteq D $ such that $f_D$ is bounded and
+$$\iint\limits_{B} f \geq \iint\limits_{D} - \epsilon$$
+$$\exists N \: B \subseteq A_N \Rightarrow \iint\limits_{D}  - \epsilon \leq \iint\limits_{B} \leq \iint\limits_{A_N} \to \lim_{n \to \infty} \iint\limits_{A_N} f$$
+$$\iint\limits_{D}  - \epsilon \leq \lim_{n \to \infty} \iint\limits_{A_N} f \leq \iint\limits_{D}  $$ 
+
+For any closed and bounded $B$ such that $f_B$ is bounded $\exists n \: B \subseteq A_N$
+$$\iint\limits_{B} f \subseteq \iint\limits_{A_N} f \leq \lim_{n \to \infty}\iint\limits_{A_N} f  = M $$
+$$\iint\limits_D f \leq M$$
+\paragraph{Example}
+Calculate
+$$\iint\limits_{\mathbb{R}^2} e^{-(x^2+y^2)}$$
+Let's calculate with $A_n = B(0,n) = \left\{ (x,y): (x^2+y^2) \leq n^2 \right\}$
+$$\iint\limits_{A_n} e^{-(x^2+y^2)} = \int_0^n \int_0^{2\pi} e^{-r^2}r d\theta dr = \int_0^n 2\pi r e^{-r^2} dr = \pi \int_0^{n^2} e^{-u}du = \pi \left[ -e^{-u} \right]_0^n = \pi (-e^{-n^2} + 1) \to \pi$$
+Now lets take $D_n = [-n,n]^2$
+$$\int_{-n}^{n}\int_{-n}^{n} e^{-(x^2+y^2)}dxdy = \left(\int_{-n}^{n} e^{-x^2}dx\right)^2 \to \pi$$
+Then
+$$\int_{-n}^{n} e^{-x^2}dx \to \sqrt{\pi}$$
+$$\int_{-\infty}^{\infty} e^{-x^2}dx = \sqrt{\pi}$$
+\paragraph{Non-positive $f$}
+Define
+$$f^+(x,y) = max(f(x,y), 0)=\begin{cases}
+f(x,y)=|f(x,y)|& f(x,y) \geq 0\\0&f(x,y) \leq 0
+\end{cases}$$
+$$f^+(x,y) = -min(f(x,y), 0)=\begin{cases}
+-f(x,y)=|f(x,y)|& f(x,y) \leq 0\\0&f(x,y) \geq 0
+\end{cases}$$
+Then
+$f = f^+ - f^-$ and $|f| = f^+ + f^-$.
+We say that $f$ is integrable on $D$ if $f^+$ and $f^-$ are integrable and
+$$\iint\limits_{D} f= \iint\limits_{D} f^+ - \iint\limits_{D} f^-$$
+That also means that $f$ is integrable $\iff$ $|f|$ is integrable.
+\paragraph{Example}
+$$\iint\limits_{x^2+y^2\leq 1} \frac{x^2}{(x^2+y^2)^{\frac{5}{2}}}$$
+$$D_n = \left\{ (x,y): \frac{1}{n} \leq x^2+y^2 \leq 1 \right\}$$
+$$\iint\limits_{D_n} \frac{x^2}{(x^2+y^2)^{\frac{5}{2}}} = \int_0^{2\pi}\int_{\frac{1}{n}}^1 \frac{r^2 \cos^2 \theta}{r^5}r dr d\theta =  \int_0^{2\pi}\int_{\frac{1}{n}}^1 \frac{\cos^2 \theta}{r^2} dr d\theta = \int_0^{2\pi}\cos^2 \theta d\theta \int_{\frac{1}{n}}^1 \frac{1}{r^2} dr \to \infty$$
+\paragraph{Example}
+Find area between two hyperbolas:
+$y^2-x^2=1$ and $x^2-y^2=1$.
+Lets divide area into 8 equal parts with axis and lines $y=\pm x$. 
+$$A_n = D_0 \cap [0,n]^2$$
+Then
+$$\iint\limits_{A_n} 1 = \iint\limits_{A_n} 1 dx dy$$
+Divide integral into two parts
+$$\iint\limits_{A_n} 1 dx dy = \underbrace{\int_0^1 \int_{0}^{x} 1 dy dx}_{\frac{1}{2}} + \int_1^n \int_{\sqrt{x^2-1}}^x 1 dy dx $$
+$$\int_1^n \int_{\sqrt{x^2-1}}^x 1 dy dx = \int_1^n x-\sqrt{x^2-1} dx$$
+Is $A(D) < \infty$?
+
+$A(D) < \infty$ $\iff$ $\int_1^n x-\sqrt{x^2-1} dx < \infty$.
+$$\int_1^n x-\sqrt{x^2-1} dx = \frac{1}{x+\sqrt{x^2+1}} \geq \frac{1}{2x}$$
+which doesn't exists.

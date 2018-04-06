@@ -1,0 +1,102 @@
+\paragraph{Example}
+$$e^{\frac{x}{y}}$$
+$D$ is triangle of $(0,0)$, $(0,1)$, $(1,1)$.
+$x<y \Rightarrow e^{\frac{x}{y}}\leq e$ 
+Since $f$ is bounded and continuous except set of points of area 0, it's integrable.
+$\int \int e^{\frac{x}{y}} dx dy$ is easier to calculate, thus we choose it:
+$$\int_0^1 \int_0^y e^{\frac{x}{y}} dx dy = \int_0^1 \left[ye^{\frac{x}{y}}\right]_{x=0}^{x=y}dy = \int_0^1 y(e -1) dy =\left[ \frac{y^2(e-1)}{2}\right]_0^1 = \frac{e-1}{2}$$
+\subsection{Substitution for multiple variables}
+\paragraph{Sentence}
+Let $f$ integrable on $[a,b]$ and $\phi: [\alpha, \beta] \to [a,b]$ increasing and continuously differentiable such that $\phi(\alpha) = a$ and $\phi(\beta) = b$ then
+$$\int_a^b f(x) dx = \int_{\alpha}^{\beta} f(\phi(t))\cdot \phi^\prime (t) dt$$
+More generally, for monotonous $\phi$
+
+$$\int_a^b f(x) dx = \int_{\alpha}^{\beta} f(\phi(t))\cdot \left|\phi^\prime (t)\right| dt$$
+
+We can further generalize it to any invertible function:
+$$\phi(D) = R \quad \int\limits{R} f(x) dx = \int\limits{D} f(\phi(t))\cdot \left|\phi^\prime (t)\right| dt$$
+
+Suppose $D=[\alpha, \beta]$ and $R=[a,b]$. $\phi: [\alpha, \beta] \to [a,b]$. $f=1$. 
+$$\int\limits_{[\alpha, \beta]}|\phi^\prime(t)|dt$$
+Is length of $[a,b]$. 
+If $\phi^\prime$ is constant then
+$$L([a,b]) = c \cdot L([\alpha, \beta])$$
+
+We can think of derivative as how $\phi$ changes length of $[a,b]$.
+
+Let's take small interval:$$[t-\Delta t, t+\Delta t] \to [\phi(t-\Delta t), \phi(t+\Delta t)]$$
+$$\left|\phi(t-\Delta t) -  \phi(t+\Delta t)\right| = L(new) = |\phi^\prime(c)|2\Delta t \approx |\phi^\prime(t)|2\Delta t = L(old) \cdot |\phi^\prime(t)|$$
+
+\paragraph{Multivariable}
+Here $\phi: \underbrace{D}_{\subset \mathbb{R}^2} \to \underbrace{R}_{\subset \mathbb{R}^2}$
+
+First of all, suppose $\phi$ linear, $\phi=T$
+$$T = \begin{pmatrix}
+a&b\\c&d
+\end{pmatrix}$$
+$$\phi\left(\begin{pmatrix}
+x\\y
+\end{pmatrix}\right) = \begin{pmatrix}
+a&b\\c&d
+\end{pmatrix} \cdot \begin{pmatrix}
+x\\y
+\end{pmatrix}$$
+\paragraph{Lemma}
+Let $T = \begin{pmatrix}
+a&b\\c&d
+\end{pmatrix}$ invertible.
+$D$ is square $1\times 1$. Then $$A(T(D)) = \left| \det \begin{pmatrix}
+a&b\\c&d
+\end{pmatrix} \right|$$
+\subparagraph{Proof}
+$D$ is aquired from $e_1= \begin{pmatrix}1\\0\end{pmatrix}$ and $e_2= \begin{pmatrix}0\\1\end{pmatrix}$. Then $T(D)$ is parallelogram with sides $T(e_1)= \begin{pmatrix}a\\c\end{pmatrix}$ and $T(e_2) = \begin{pmatrix}b\\d\end{pmatrix}$. Its area is height times basis:
+\begin{align*}
+A(T(D)) = \big|\norm{(a,c)} \cdot \norm{(b,d)} \cdot \sin \alpha\big| = \big|\norm{(a,c)} \cdot \norm{(b,d)} \cdot \cos \beta\big| =\\= \big|\norm{(a,c)} \cdot \norm{(d,-b)} \cdot \cos \beta\big| = \big|(a,c) \cdot (d,-b)\big| = |ad-bc| = \left| \det \begin{pmatrix}
+a&b\\c&d
+\end{pmatrix} \right|
+\end{align*}
+where $\alpha$ is angle between $T(e_1)$ and $T(e_2)$ and $\beta$ is complimentary angle.
+\paragraph{Non-linear $\phi$}
+What happens if $\phi$ is non-linear. Then 
+$$\phi((s,t)) = \left(x(s,t), y(s,t)\right)$$
+Suppose $x$ and $y$ have continuous partial derivatives, i.e. differentiable. Then 
+$$x(s,t) \approx \frac{\partial x}{\partial s}\delta s + \frac{\partial x}{\partial t}\delta t+x(s_0,t_0)$$
+$$y(s,t) \approx \frac{\partial y}{\partial s}\delta s + \frac{\partial y}{\partial t}\delta t+y(s_0,t_0)$$
+$$\phi\left(\begin{pmatrix}s\\t\end{pmatrix}\right)\begin{pmatrix}x(s,t)\\y(s,t)\end{pmatrix} \approx \begin{pmatrix}\frac{\partial x}{\partial s}&\frac{\partial x}{\partial t}\\\frac{\partial y}{\partial s}&\frac{\partial y}{\partial t}\end{pmatrix}\cdot \begin{pmatrix}\Delta s\\\Delta t\end{pmatrix} + \begin{pmatrix} x(s_0,t_0)\\y(s_0,t_0)\end{pmatrix}$$
+Then area of $\phi(D)$ if $D$ is rectangle small enough  is
+$$A(\phi(D)) = \phi(D) \cdot \left| \det \begin{pmatrix}\frac{\partial x}{\partial s}&\frac{\partial x}{\partial t}\\\frac{\partial y}{\partial s}&\frac{\partial y}{\partial t}\end{pmatrix} \right|$$
+\paragraph{Denotation} 
+$$\frac{\partial (x,y)}{\partial (s,t)} = \begin{pmatrix}\frac{\partial x}{\partial s}&\frac{\partial x}{\partial t}\\\frac{\partial y}{\partial s}&\frac{\partial y}{\partial t}\end{pmatrix}$$
+and
+$$J(\phi) = \left|\det \left( \frac{\partial (x,y)}{\partial (s,t)} \right)\right|$$
+is called Jacobian.
+\paragraph{Sentence}
+Let $D$ and $R$ intervals with non zero area in $\mathbb{R}^2$ and $\phi: D \to R$ bijective with continuous partial derivatives and also $J(\phi) \neq 0$ in any point of $D$. For any continuous $f$
+$$\iint\limits_{R} f(x,y) = \iint\limits_{D} f(\phi(s,t)) |J(\phi)|$$
+\paragraph{Example}
+$$\iint\limits_{R} xy$$
+$R$ is parallelogram with vertices $(0,0)$, $(1,2)$, $(2,2)$ and $(3,4)$, i.e. built with  lines $y=2x+a$ and $y=x+b$.
+For any point in $R$:
+$$0 \leq y-x \leq 1$$
+$$-2 \leq y-2x \leq 0$$
+Those inequalities define $R$. Define $s=y-x$ and $t=y-2x$.
+
+Then $x=s-t$ and $y=2s-t$.
+Define $D=[0,1] \times [-2,0]$.
+$$\phi: D \to R \quad \phi(s,t) = (s-t, 2s-t)$$
+$$J(\phi) =  \left| \det \left( \frac{\partial (x,y)}{\partial (s,t)} \right)\right| = \left|-1-(-2)\right| = 1$$
+$$\iint\limits_{R} xy  =\iint\limits_{D} (s-t)(2s-t) = \int_{-2}^0\int_0^1 2s^2-3st+t^2 dsdt = \dots = 7$$
+\paragraph{Polar coordinates}
+Define
+$$x(r,\theta) = r\sin \theta$$
+$$y(r, \theta) = r\cos \theta$$
+It can be that $\phi^{-1}$ is undefined on some interval since $\phi(0,\theta_1) = \phi(0, \theta_2)$.
+$$\begin{pmatrix}\frac{\partial x}{\partial s}&\frac{\partial x}{\partial t}\\\frac{\partial y}{\partial s}&\frac{\partial y}{\partial t}\end{pmatrix} = \begin{pmatrix}\cos \theta&-r\sin\theta\\\sin \theta&r\cos \theta\end{pmatrix}$$
+$$J(\phi) = r(\cos^2 \theta + \sin^2 \theta) = r$$
+\paragraph{Example}
+$$\iint\limits_R \log(x^2+y^2)$$
+$R$ is ring between two circles with radii $a$ and $b$ in first quoter, i.e. $a^2 \leq x^2+y^2 \leq b^2$, $x,y > 0$.
+$$D= \left\{ (r,\theta): (x(r,\theta), y(r,\theta)) \in R \right\} = \left\{ (r,\theta): a\leq r\leq b \: 0 \leq \theta \leq \frac{\pi}{2} \right\}$$
+\begin{align*}
+\iint\limits_R \log(x^2+y^2) = \iint\limits_D \log(r^2) =  \int_a^b \int_0^{\frac{\pi}{2}} \log(r^2)  r d\theta dr = \int_a^b \int_0^{\frac{\pi}{2}} 2r\log(r) d\theta dr = \int_a^b \pi r\log(r)  dr = \pi \int_a^b  r\log(r)  dr =\\= \left[ \frac{r^2}{2}\cdot \log(r) \right]_a^b - \int_a^b \frac{r}{2} dr = \left[\frac{1}{2}r^2\log r - \frac{1}{4}r^2 \right]_a^b
+\end{align*}

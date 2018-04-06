@@ -1,0 +1,69 @@
+\paragraph{Example}
+$$\sum_{n=1}^\infty \frac{1}{n!}x^n$$
+\subparagraph{Solution}
+$$\left|\frac{a_{n+1}}{a_n}\right| = \left| \frac{\frac{1}{(n+1)!}x^{n+1}}{\frac{1}{n!}x^n} \right| = \frac{|x|}{n+1} \stackrel{n\to \infty}{\longrightarrow} = 0 < 1$$
+So series converge
+\paragraph{Lemma}
+$$\sum_{k=1}^n a_kb_k = a_nB_n-\sum_{k=1}^{n-1} B_k\left(a_{k+1}-a_k\right)$$
+$$B_k = \sum_{k=1}^n b_k$$
+\subparagraph{Proof}
+\begin{align*}
+\sum_{k=1}^n a_kb_k = \sum_{k=1}^n a_k\left(B_k-B_{k-1}\right) = \sum_{k=1}^n a_kB_k-\sum_{k=1}^{n-1} a_{k+1}B_k = a_nB_n + \sum_{k=1}^{n-1} a_kB_k-\sum_{k=1}^{n-1} a_{k+1}B_k =\\= a_nB_n + \sum_{k=1}^{n-1} a_kB_k - a_{k+1}B_k = a_nB_n - \sum_{k=1}^{n-1} \left(a_{k+1} -a_k \right)B_k
+\end{align*}
+\paragraph{Sentence}
+Let $\left\{ a_n \right\}$ decreasing series such that $a_n \to 0$ and $\left\{ b_n \right\}$ sequence such that $\sup_n \left|\sum_{k=1}^n b_k \right| < \infty$ then $\sum_{n=1}^\infty a_nb_n$ converges.
+\subparagraph{Proof}
+Denote $M = \sup_n \left|\sum_{k=1}^n b_k \right| $
+$$\sum_{k=1}^n a_kb_k = \underbrace{a_nB_n}_{\to 0 (bounded \cdot \to 0)}-\sum_{k=1}^{n-1} B_k\left(a_{k+1}-a_k\right)$$
+$$\left|B_k\left(a_{k+1}-a_k\right)\right| \leq M(a_k-a_{k+1})$$
+$$\sum_{k=1}^{n-1} M_k\left(a_{k+1}-a_k\right) = M(a_1-a_{k+1}) \to Ma_1$$
+From comparison sentence, $B_k\left(a_{k+1}-a_k\right)$ converges absolutely.
+\paragraph{Note}
+Alternative condition on $\left\{ a_n \right\}$ is that $\sum \big| a_{k+1} - a_k \big|$ converges.
+\paragraph{Example}
+$b_n = \left( -1 \right)^{n+1}$ fulfills conditions, acquiring Leibniz test.
+\paragraph{Example}
+$$\sum_{n=1}^{\infty} \frac{\sin nx}{n}$$
+\subparagraph{Solution}
+$a_n = \frac{1}{n}$, $b_n = \sin nx$.
+$\left\{a_n\right\}$ fulfills conditions of the sentence. We need to show that $B_n = \sum_{k=1}^n \sin kx$ is bounded. We can suppose that $\sin \frac{x}{2} \neq 0$, else $x = 2\pi m$ and $B_n = 0$.
+$$B_n = \sum_{k=1}^n \sin kx = \sum_{k=1}^n \frac{2\sin \frac{x}{2} \sin kx}{2\sin \frac{x}{2}}$$
+$$2\sin \alpha \sin \beta = \cos \left(\alpha - \beta \right) -  \cos \left(\alpha + \beta \right)$$
+$$B_n =  \frac{1}{2\sin \frac{x}{2}} \sum_{k=1}^n \left( \cos \left(kx-\frac{1}{2}x\right) - \cos \left(kx+\frac{1}{2}x\right) \right) = \frac{1}{2\sin \frac{x}{2}} \left(\cos \frac{x}{2} - \cos \frac{2n+1}{2}x\right)$$
+$$|B_n| \leq \frac{2}{2\left|\sin \frac{x}{2}\right|}$$
+\paragraph{Example}
+$$\sum \frac{\sin nx}{n+\left(-1\right)^{n+1}}$$ according to alternative condition.
+\paragraph{Sentence}
+Suppose $\sum^{\infty} b_n$ converges, and $\left\{a_n\right\}$ monotonous and bounded then $\sum a_nb_n$ converges.
+\subparagraph{Proof}
+Suppose $\left\{a_n\right\}$ is non-decreasing.
+$$\sum_{k=1}^n a_kb_k = \underbrace{a_nB_n}_{converges}-\sum_{k=1}^{n-1} B_k\left(a_{k+1}-a_k\right)$$
+$$|B_n| \leq M$$
+$$\sum_{k=1}^{n-1} \left|B_k\left(a_{k+1}-a_k\right)\right| \leq M(a_{k}-a_{k+1})$$
+\paragraph{Example}
+$$\sum \underbrace{\frac{\left(-1\right)^{n+1}}{n}}_{b_n} \cdot \underbrace{\left(1+\frac{2}{n}\right)^n}_{a_n}$$
+\subsection{Operations on series}
+\paragraph{Sentence}
+If series $\sum a_n$ converges then the series which is acquired by adding bracket converges too.
+\paragraph{Sentence}
+If in every bracket all the elements are of same sign and the acquired series converges, then the original series converges too.
+\subparagraph{Proof}
+Denote $S_n$ paritial sums of $\sum a_n$. Denote the acquired series as $\sum A_n$ and its partial sums as $T_n$.
+$$\underbrace{\left(a_1+a_2+\dots+a_{n_1}\right)}_{A_1}+\underbrace{\left(a_{n_1+1}+a_{n_1+2}+\dots+a_{n_2}\right)}_{A_2}+\dots$$
+$$T_1 = S_{n_1} \quad T_2 = S_{n_2} \dots$$
+Suppose that $\sum^\infty A_k = A$ converges. $$\forall n \exists m n_m+1 \leq n \leq n_{m+1}$$
+$$S_n= S_{n_m}+ \sum_{k=n_m+1}^n a_k = T_m + \underbrace{\sum_{k=n_m+1}^n a_k}_{\beta_n}$$
+$$\left|\beta_n\right|\leq \left|A_{m+1}\right| \stackrel{m\to \infty}{\to} 0$$
+since $A_n$ converges.
+$$\beta_m \to 0 \:w T_m \to A \Rightarrow S_n \to A$$
+\paragraph{Sentence}
+If series absolutely converges then after change of elements order it'll absolutely converge to the same value.
+\subparagraph{Proof}
+Denote:
+$$a_n^+ = \max (a_n,0) \geq 0$$
+$$a_n^- = -\min (a_n,0) \geq 0$$
+Always $a_n = a_n^+ - a_n^-$ and $|a_n| = a_n^+ + a_n^-$. Also $a_n^\pm \leq |a_n|$. 
+Since $\sum a_n$ converges, both $\sum a_n^+$ and $\sum a_n^-$ converges and $$\sum a_n = \sum a_n^+ - \sum a_n^-$$
+Change of order is done with permutation $\pi: \mathbb{N} \to \mathbb{N}$. The new series is $\sum a_{\pi_n}$. Both $\sum a_{\pi_n}^+$ and  $\sum a_{\pi_n}^-$ converge to the same value, since they're nonnegative. trivially,
+$$\sum a_{\pi_n} = \sum a_{\pi_n}^+ - \sum a_{\pi_n}^- = \sum a_n$$
+

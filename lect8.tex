@@ -1,0 +1,39 @@
+\paragraph{Example}
+$$a_n = \frac{\left(n!\right)^2}{\left(2n\right)!}$$
+$$\frac{a_{n+1}}{a_n} = \frac{\left[\left(n+1\right)!\right]^2}{(2n+2)!}\cdot \frac{\left(n!\right)^2}{\left(2n\right)!} = \frac{(n+1)^2}{(2n+2)(2n+1)} = \frac{n+1}{2(2n+1)} \to \frac{1}{4}$$
+The series converges
+\paragraph{Example}
+$$a_n = \frac{4^n \left(n!\right)^2}{\left(2n\right)!}$$
+$$\frac{a_{n+1}}{a_n} = \frac{4^{n+1}\left[\left(n+1\right)!\right]^2}{(2n+2)!}\cdot \frac{\left(n!\right)^2}{4^n\left(2n\right)!} = 4\frac{(n+1)^2}{(2n+2)(2n+1)} = \frac{4n+4}{2(2n+1)} = \frac{4n+4}{4n+2} \geq 1$$
+The series diverges
+\paragraph{Root test} 
+\begin{enumerate}
+	\item If starting from some value $\sqrt[n]{a_n} \leq q < 1$ then the series $\sum a_n$ converges
+	\item If for infinite number of n $\sqrt[n]{a_n} \geq 1$ then the series diverges
+	\item $\limsup \sqrt[n]{a_n} <  1 \Rightarrow$ the series converges
+	      
+	      $\limsup \sqrt[n]{a_n} > 1 \Rightarrow $ the series diverges
+	\item If exists $L = \lim \sqrt[n]{a_n}$ then the series converges if $L<1$ and if $L>1$ the series diverges.
+\end{enumerate}
+\subparagraph{Proof} 
+\begin{enumerate}
+	\item If starting from some value $\sqrt[n]{a_n} \leq q < 1 \Rightarrow a_n \leq q^n \Rightarrow \sum a_n < \infty$  
+	\item $\sqrt[n]{a_n} \geq 1 \Rightarrow a_n \geq 1 \Rightarrow a_n \not\to 0 \Rightarrow$ the series diverges
+\end{enumerate}
+
+\paragraph{Example}
+$$\sum_{n=1}^\infty \left( 2 + (-1)^n \right)^n \cdot \alpha^n \quad \alpha \geq 0$$
+$$\sqrt[n]{a_n} = \alpha (2+(-1)^n)$$
+$$\limsup \sqrt[n]{a_n} = 3\alpha < 1 \Rightarrow \alpha < \frac{1}{3}$$
+For $\alpha=\frac{1}{3}$ there are infinite number of $\sqrt[n]{a_n} = 1$, so the series diverges.
+\paragraph{Note} Root test is stronger than fraction test, i.e. if we got convergence from fraction test, we can get it from root test too.
+\subparagraph{Proof} Suppose $\forall n \frac{a_{n+1}}{a_n} \leq q < 1$. Then
+$$a_k = a_1 \cdot \frac{a_2}{a_1} \cdot \dots \cdot \frac{a_k}{a_{k-1}} \leq a_1 q^{k-1}$$
+$$\sqrt[k]{a_k} \leq \sqrt[k]{a_1} q^{\frac{k-1}{k}} \to q < 1$$
+\paragraph{Theorem} $a_n \geq 0$ $\left\{ a_n\right\}$ monotonous non-increasing and the series $\sum a_n$ converges, then $na_n \to 0$
+\subparagraph{Proof}
+From Cauchy sentence: $\exists N>0$ such than $\forall n > N$ $\sum_{k=n+1}^{2n} a_k < \epsilon$, i.e. $\lim_{n\to \infty} \sum_{k=n+1}^{2n} a_k = 0$. $\forall n+1\leq k \leq 2n a_k \geq a_{2n}$:
+$$0 \leftarrow \sum_{k=n+1}^{2n} a_k  \geq \sum_{k=n+1}^{2n} a_{2n} = na_{2n} \geq 0$$
+$$2na_{2n} \to 0$$
+In addition, since $(2n+1)a_{2n} \geq (2n+1)a_{2n+1}$and $2na_{2n}  \to 0$ and $a_{2n} \to 0$, this works for odd elements too.
+\paragraph{Example} Harmonic series: $\frac{1}{n} \cdot n \neq 0 \Rightarrow$ series diverges 

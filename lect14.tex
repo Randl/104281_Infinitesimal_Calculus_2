@@ -1,0 +1,104 @@
+\subsection{Power series}
+Power series around $x_0$ is series of form $\sum_{n_0}^\infty a_n(x-x_0)^n$
+\paragraph{Example}
+$\sum_{n=0}^\infty x^n$.
+Converges in $(-1, 1)$.
+$$S_n \to S = \frac{1}{1-x}$$
+$$S-S_n = \sum_{n+1}^\infty x^k = x^{k+1} \sum_{k=0}^\infty x^k = \frac{x^{n+1}}{1-x} \to 0 $$
+$$\sup_{x\in (-1,1)} \left| S(x) - S_n(x) \right| = \sup_{|x|<1} \frac{|x|^{n+1}}{1-x} = +\infty$$
+i.e. on $(-1,1)$ series converges only pointwise.
+
+However, on $[-R,R]$, $0<R<1$, series converges uniformly:
+$$|x^n| \leq R^n \left(M_n\right)$$
+by Weierstrass theorem.
+\paragraph{Interval of convergence}
+Interval of convergence of power series is a set of $x$ such that series converge.
+\paragraph{Example}
+$$\sum_{n=0}^\infty \frac{x^n}{n!}$$
+Interval of convergence $\mathbb{R}$. Series converges no uniformly on $\mathbb{R}$, but uniformly on $[-R,R]$.
+\paragraph{Example}
+$$\sum_{n=1}^\infty \frac{x^n}{n}$$
+By fraction test:
+$$\left|\frac{\frac{x^{n+1}}{n+1}}{\frac{x^{n}}{n}}\right| = \left|x\right| \cdot \frac{n}{n+1} \to |x|$$
+Series converges for $-1<x<1$ and diverges for $x<-1$ and $x>1$. For $x=1$ series is harmonic series and diverges. For $x=-1$ it is Leibniz series and converges. I.e. series converges on $[-1,1)$.
+\paragraph{Lemma}
+If $\sum a_n x^n$ converges in $x=\alpha$, then series converges on $(-|\alpha|, |\alpha|)$ and uniformly converges on $[-R,R]$ for any $R<|\alpha|$
+\subparagraph{Proof}
+$\sum a_n \alpha^n$  converges, so $a_n \alpha^n \to 0$ and, in particular, $\left\{a_n \alpha^n\right\}$ is bounded sequence, i.e. $\left|a_n\alpha^n\right| \leq M$.
+Define $0 \leq R < |\alpha|$, $\forall x \leq R$
+$$\left|a_n x^n \right| = \left|a_n x^n \right| \left|\frac{x^n}{\alpha^n}\right| \leq M  \left|\frac{x^n}{\alpha^n}\right| $$
+According to Weierstrass theorem series converges uniformly and so converges on $(-|\alpha|, |\alpha|)$.
+\paragraph{Sentence}
+For any power series $\sum_{n=0}^\infty a_n x^n$ $\exists 0\leq R\leq \infty$ which is called radius of convergence of series such that series converges on $(-R, R)$ and diverges for $|x| > R$.
+\subparagraph{Proof}
+Denote interval of converges as $E$ and define
+$$R = \sum \left[ |x|, x \in E \right]$$
+$$\forall |x| < R \exists |\alpha| > |x|$$
+By lemma, series converges in x. If $|x| > R$, series diverges in $x$ by definition of $R$.
+\paragraph{Example}
+$$\sum_{n=0}^\infty n!x^n$$
+By fraction test
+$$\left| \frac{(n+1)!x^{n+1}}{n!x^n}\right| = (n+1)|x| \to \infty$$
+$$R=0$$
+\paragraph{Sentence}
+For any power series $\sum_{n=0}^\infty a_n x^n$
+\begin{enumerate}
+	\item Denote $\lambda = \limsup_{n \to \infty} \sqrt[n]{|a_n|}$ then $R = \frac{1}{\lambda}$.
+	\item If exists $\lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right|$ then $R = \frac{1}{\mu}$.
+\end{enumerate}
+\subparagraph{Proof}
+\begin{enumerate}
+	\item Let's check for which $x$ series converges by root test: 
+	$$\sqrt[n]{|a_n x^n|} = \sqrt[n]{|a_n |}x$$
+	$$\limsup \sqrt[n]{|a_n x^n|}  = \limsup \sqrt[n]{|a_n |}x = \lambda x$$
+	$$\lambda x < 1 \iff |x| < \frac{1}{\lambda}$$
+\end{enumerate}
+\paragraph{Example}
+$$\sum n^n x^n$$
+$$\limsup  \limsup_{n \to \infty} \sqrt[n]{|n^n|} = n \to \infty$$
+$R=0$
+\paragraph{Example}
+$$\sum_{n=1}^{\infty} \frac{x^n}{n^2}$$
+$$a_n = \frac{1}{n^2}$$
+$$\mu = \lim \left|\frac{a_{n+1}}{a_n}\right| = \left(\frac{n+1}{n}\right)^2 = 1$$
+$$R = 1$$
+and for $x=\pm R$ series converges
+\paragraph{Example}
+$$\sum_{n=1}^{\infty} \frac{x^n}{n^n}$$
+$$a_n =\frac{1}{n^n}$$
+$$\sqrt[n]{|a_n|} = \frac{1}{n} = 0$$
+$$R=\mathbb{R}$$.
+\paragraph{Example}
+$$\sum_{n=1}^{\infty} \frac{1}{n}x^{n^2}$$
+$$x+0x^2+0x^3+\frac{1}{2}x^4+0x^5+0x^6+0x^7+0x^8+\frac{1}{3}x^9+\dots$$
+$$a_n: 1,0,0,\frac{1}{2},0,0,0,0,\frac{1}{3},\dots$$
+
+$$\sqrt[n]{|a_n|}: 1,0,0,\left(\frac{1}{2}\right)^{\frac{1}{4}},0,0,0,0,\left(\frac{1}{3}\right)^{\frac{1}{4}},\dots$$
+$$\limsup \sqrt[n]{|a_n|} = \lim \left(\frac{1}{n}\right)^{\frac{1}{n^2}} =1 $$
+\paragraph{Sentence}
+For $0<R<\infty$ series converges in $x=R$ $\iff$ convergence on $[0, R)$ is uniform.
+\subparagraph{Proof}
+\begin{itemize}
+	\item $\Rightarrow$:
+	
+	Suppose $\sum a_n R^n$ converges.  General element is
+	$$a_n x^n = \underbrace{a_nR^n}_{\beta_n}\underbrace{ \left(\frac{x}{R}\right)^n}_{\alpha_n}$$
+	Denote 
+	$$B_n = \sum_{i=n}^k \beta_i$$
+	$$\forall m>n \sum_{k=n}^{m} \alpha_k \beta_k = \alpha_m B_m - \sum_{k=n}^{m-1} B_k \left( \alpha_{k+1} - \alpha_k \right)$$
+	For $\epsilon > 0$ according to Cauchy for converging series $\sum a_k R^k$ $\exists N = N(\epsilon)$ such that $\forall n,m > N$ 
+	$$\left|B_m\right| = \left|\sum_{k=n}^m a_kR^k\right| < \epsilon$$
+	\begin{align*}
+	\forall 0 \leq x \leq R \quad  \left|\sum_{k=n}^m a_kx^k\right|  =  \left|\sum_{k=n}^m \alpha_k \beta_k \right| = \left|\alpha_m B_m - \sum_{k=n}^{m-1} B_k \left( \alpha_{k+1} - \alpha_k \right)\right| =\\= \left|\left(\frac{x}{R}\right)^mB_m - \sum_{k=n}^{m-1} B_k \left( \left(\frac{x}{R}\right)^{k+1} - \left(\frac{x}{R}\right)^k \right)\right| \leq \epsilon \left(\frac{x}{R}\right)^m- \sum_{k=n}^{m-1} \epsilon  \left(\left(\frac{x}{R}\right)^k - \frac{x}{R}\right)^{k+1}  \stackrel{telescopic}{=} \epsilon \left(\frac{x}{R}\right)^n \leq \epsilon
+	\end{align*}
+	According to Cauchy $\sum^\infty a_k x^k$ uniformly converges on $[0,R]$.
+	\item $\Leftarrow$:
+	
+	Lets show that $\sum a_nR^n$ converges using Cauchy criterion.
+	Choose $\epsilon > 0$, since $\sum a_nx^n$ converges uniformly on $[0,R)$, by Cauchy criterion for function series, $\exists N =M\epsilon$ such that $\forall n>m>N$ 
+	$$\forall 0\leq x< R \left|\sum_{k=m}^n a_Kx^k\right| < \epsilon$$
+	When $x \to R^-$,
+	$$\left|\sum_{k=m}^n a_KR^k\right| \leq \epsilon$$
+	
+	So $\sum a_nR^n$ converges
+\end{itemize} 

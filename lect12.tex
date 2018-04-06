@@ -1,0 +1,79 @@
+\paragraph{Example}
+$$f_n(x) = \frac{1}{n}x^n\quad x\in[0,1]$$
+$$f_n \to 0$$
+\paragraph{Example}
+$$D_n(x) = \begin{cases}
+0 &x=\frac{p}{q} \: q \leq n\\
+1 & otherwise
+\end{cases}$$
+$$D_n \to D = D_n(x) = \begin{cases}
+	0 &x\in Q\\
+	1 & x \not\in Q
+\end{cases}$$
+\paragraph{Example}
+$$f(n) = \begin{cases}
+2n^2x& 0\leq x < \frac{1}{2n}\\
+-2n^2x+2n& \frac{1}{2n}\leq x < \frac{1}{n}\\
+0 & \frac{1}{n} \leq x \\
+\end{cases}$$
+$$f_n \to 0$$
+$$\int f_n = 1 \quad \int f = 0$$
+\paragraph{Example}
+$$f_n(x) = \left(1+\frac{x}{n}\right)^n$$
+$$f_n(x) \to e$$
+\paragraph{Definition}
+$$f_n(x) \to f(x)$$ pointwise if $\forall x\in S \forall \epsilon>0  \exists N \quad \forall n > N \left| f_n(x) -f(x) \right| < \epsilon$.
+\paragraph{Example}
+$$f_n(x) = x^n$$
+Take $\epsilon>0$, what is $N=N(x,\epsilon)$? 
+$$|x^n -0| < \epsilon$$
+$$n > \log_x \epsilon$$
+$$N \geq \log_x \epsilon = \frac{\ln \epsilon}{\ln x} \stackrel{x\to 1}{\to} \infty$$
+\paragraph{Example}
+$$f_n(x) = \frac{1}{n}x^n$$
+$$|\frac{1}{n}x^n -0| < \epsilon$$
+If $N =\frac{1}{\epsilon} $, then $\frac{1}{n}x^b \leq \frac{1}{n} < \epsilon$.
+\paragraph{Definition}
+Let $\left\{ f_n \right\}$, $f$ functions defined on $S$. We say that  $\left\{ f_n \right\}$ uniformly converges to $f$ if $\forall \epsilon > 0 \exists N(\epsilon)=N \quad\forall n > N |f_n(x)-f(x)| < \epsilon $.
+
+Alternatively, if $\sup |f_n(x)-f(x)| < \epsilon$ or $\lim_{n\to \infty} \sup |f_n(x)-f(x)| = 0$
+
+\paragraph{Example}
+$$f_n = \frac{1}{x^2+n}$$
+$$f_n \stackrel{pointwise}{\to} 0$$
+Does it uniformly converges?
+$$\frac{1}{x^2+n} \leq \frac{1}{n} < \epsilon \Rightarrow N > \frac{1}{\epsilon}$$
+\paragraph{Sentence (Cauchy)}
+$\left\{f_n\right\}$ uniformly converges on $S$ $\iff$ $\forall n,m > N \quad \big|f_n(x)-f_m(x)\big| < \epsilon$.
+\subparagraph{Proof} 
+Given $S$ $\left\{f_n\right\}$ converges according to Cauchy sentence for number sequences.
+Denote $f = \lim_{n \to \infty} f_n$.
+
+Let $\epsilon > 0$. $\exists N \forall n,m > N \quad |f_n(x) -f_m(x)| < \frac{\epsilon}{2}$.
+$$\left| f(x)-f_n(x) \right| \leq \left| f(x)-f_m(x) \right|+\left| f_m(x)-f_n(x) \right| \leq \left| f(x)-f_m(x) \right|+ \frac{\epsilon}{2}$$
+Since $f_n \to f$, for big enough $m$ $f(x) - f_m(x) < \frac{\epsilon}{2}$. 
+$$\left| f(x)-f_n(x) \right|< \epsilon$$
+\paragraph{Limit continuousness}
+For functions  $\left\{f_n\right\}$  continuous on interval $I$ converge uniformly, then $f$ is continuous.
+\subparagraph{Proof}
+Choose $x_0\in I$. $$\exists n \quad \forall n > N |f_n(x) - f(x)| < \frac{\epsilon}{3}$$ 
+$f_N$ is continuous, so $\forall \epsilon >0 \exists \delta < 0$ such that if  $x-x_0 < \delta$ $|f_N(x)-f_N(x_0)| < \frac{\epsilon}{3}$.
+$$|f(x) - f(x_0) |  \leq |f(x) - f_N(x) |+|f_N(x) - f_N(x_0) |+|f(x_0) - f_N(x_0) | < \epsilon$$
+\paragraph{Dini sentence}
+For monotonous functions  $\left\{f_n\right\}$  continuous on closed interval $I$ and pointwise converge to continuous function $f$. Then $\left\{f_n\right\}$  uniformly converges.
+\subparagraph{Proof}
+Suppose that $f_n$ are non-increasing. To simplify, replace $f_n$ by $f_n-f$ and $f$ by $0$.
+
+Suppose that convergence is non-uniform. Then $\exists \epsilon_0 > 0 \forall N \exists n > N \exists x_n \quad f_n(x_n) > \epsilon_0$.
+
+Lets build the following sequence:
+$$N=1 \: \exists n_1 > 1 \exists x_{n_1} \quad f_{n_1}(x_{n_1}) > \epsilon_0$$
+$$N=n_1 \: \exists n_2 > n_1 \exists x_{n_2} \quad f_{n_2}(x_{n_2}) > \epsilon_0$$
+$$N=n_2 \: \exists n_3 > n_2 \exists x_{n_3} \quad f_{n_3}(x_{n_3}) > \epsilon_0$$
+We got sequence $n_k$ and $\left\{x_{n_k}\right\} \subseteq I$ and $f_{n_k}(x_{n_k}) > \epsilon_0$. $\forall m \leq n_k f_m(x_{n_k}) \geq f_{n_k}(x_{n_k}) > \epsilon_0$.
+
+Choose $m$, $\forall k, n_k > m$, $f_m(x_{n_k})  > \epsilon_0$.
+$\left\{ x_{n_k}\right\}$ bounded sequence, so it has converging subsequence: 
+$$x_{n_{k_l} } \stackrel{l \to \infty}{\to} x_0$$
+$$f_m\left(x_{n_{k_l} } \right)\stackrel{l \to \infty}{\to} f_m(x_0)$$
+From some place $n_{k_l} > m \Rightarrow \epsilon_0 < f_m\left(x_{n_{k_l} } \right) \to f_m(x_0) \Rightarrow f_m(x_0) \geq \epsilon_0$.

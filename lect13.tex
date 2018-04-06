@@ -1,0 +1,99 @@
+\paragraph{Limit integrability}
+Let $\left\{ f_n \right\}$ integrable on $[a,b]$ and converges uniformly to $f$, then $f$ is also integrable and also
+
+$$\int_a^b f_n dx \to \int_a^b f dx$$
+
+Define $F_n(x) = \int_a^x f_n(t) dt$, and $F(x) = \int_a^x f(t) dt$, then $F_n\to F$ uniformly.
+\subparagraph{Proof}
+Given a sequence $f_n \to f$ uniformly, integrabble on $[a,b]$, lets show that $f$ is integrable on $[a,b]$.
+$$\forall x \: \left|f_n(x) - f(x)\right| \leq \frac{\epsilon}{4(b-a)}$$
+$f$ is integrable $\Rightarrow$ exists $\delta > 0 $ such that if $\lambda(P) < \delta$ then
+$$U(P, f_n) - L(P, f_n) < \frac{\epsilon}{2}$$
+$$\sum_{i=1}^n \left(M^{f_n}_i - m^{f_n}_i\right) \Delta x_i < \frac{\epsilon}{2}$$
+Lets show:
+$$U(P,f)  -L(P,f) < \epsilon$$
+$$\sum_{i=1}^n \left(M^{f}_i - m^{f}_i\right) \Delta x_i < \epsilon$$
+$\forall t,s$ on $[a,b]$:
+$$f_n(t) - \frac{\epsilon}{4(b-a)} < f(t) < f_n(t) + \frac{\epsilon}{4(b-a)} $$
+$$f_n(s) - \frac{\epsilon}{4(b-a)} < f(s) < f_n(s) + \frac{\epsilon}{4(b-a)} $$
+$$f_n(t) - f_n(s) - \frac{\epsilon}{2(b-a)} < f(t) -f_s< f_n(t) -f_n(s) + \frac{\epsilon}{2(b-a)}$$
+In subinterval $[x_{i-1}, x_i]$:
+$$M^f_i - m^f_i = \sup_{t,s \in [x_{i-1}, x_i]} f(t) - f(s)$$
+$$M^{f_n}_i - m^{f_n}_i - \frac{\epsilon}{2(b-a)}<M^f_i - m^f_i  <(M^{f_n}_i - m^{f_n}_i - \frac{\epsilon}{2(b-a)}$$
+
+$$\underbrace{\sum_{i=1}^n \left(M^{f_n}_i - m^{f_n}_i\right)\Delta x_i}_{\frac{\epsilon}{2}} - \underbrace{\sum_{i=1}^n\frac{\epsilon\Delta x_i}{2(b-a)}}_{\frac{\epsilon}{2}}< \left(M^{f}_i - m^{f}_i\right) \Delta x_i  <\underbrace{\sum_{i=1}^n \left(M^{f_n}_i - m^{f_n}_i\right)\Delta x_i}_{\frac{\epsilon}{2}} + \underbrace{\sum_{i=1}^n\frac{\epsilon\Delta x_i}{2(b-a)}}_{\frac{\epsilon}{2}}$$
+$$0< U(P,f) - L(P,f) < \epsilon $$
+
+Second part:
+$$\left|F_n(x) - F(x)\right| = \left| \int_a^x f_n(t) dt - \int_a^x f(t) dt \right| = \left| \int_a^x f_n(t) - f(t) dt \right|  \leq  \int_a^x \left|  f_n(t) - f(t)  \right| dt$$
+Let $\epsilon > 0$, then $\exists N $ such that $\forall n > N \: \sum_t |f_n(t) - f(t)| < \epsilon$.
+$$\left|F_n(x) - F(x)\right|  \leq \int_a^x \epsilon dt = \epsilon(x-a) \leq \epsilon(b-a)$$
+$$\forall \epsilon > 0 \exists N \forall n > N \: \left|F_n(x) - F(x)\right|\leq \epsilon(b-a)$$
+meaning $F_n \to F$ converges uniformly.
+\subsection{Derivability}
+$$f_1(x) = |x|^2$$
+$$f_2(x) = |x|^{\frac{3}{2}}$$
+$$f_n(x) = |x|^{1+\frac{1}{n}}$$
+$$f_n(x) \to |x|$$
+$f_n$ converges uniformly.
+
+$$0 \leq g_n(x) = x - x^{1-\frac{1}{n}}$$
+Maximum is acquired at $x_n = \left( 1+\frac{1}{n} \right)^{-n}$
+$$\sup|x - x^{1+\frac{1}{n}}| = x_n \left( 2-x_n^{\frac{1}{n}} \right) = \frac{1}{\left(1+\frac{1}{n}\right)^n}\frac{1}{n+1} \to 0$$
+i.e. converges uniformly.
+\paragraph{Sentence}
+Let $f_n$ continuously derivable on $I$ such that
+\begin{enumerate}
+	\item $\left\{ f^\prime_n\right\}$ uniformly converges on $I$
+	\item $\exists x_0 \in I$ such that $f_n(x_0)$ converges.
+\end{enumerate}
+Then $f_n \to f$ uniformly on every finite subinterval $I$ and $f_n^\prime \to f^\prime$.
+\subparagraph{Proof}
+$\exists g \: f^\prime_n \to g$ uniformly. $f^\prime_n$ monotonous $\Rightarrow$ $g$ monotonous.
+From previous sentence:
+
+$$f_n(x) - f_n(x_0) = \int_{x_0}^{x} f^\prime_n dt \stackrel{uniform}{\to} \int_{x_0}^x g dt$$
+$f_n(x_0) \to c$ and so
+$$f_n(x) \stackrel{uniform}{\to} \underbrace{c + \int_{x_0}^x g(t) dt}_{=f}$$
+$f$ is integrable and $f^\prime = g$ $\Rightarrow$ $f_n^\prime \to f^\prime$.
+\subsection{Series of functions}
+Given sequence of functions $\left\{f_n\right\}$ on interval $A$ we say that series $\sum^\infty f_n(x)$ converges pointwise or uniformly if sequence of partial sums
+$$S_n(x) = \sum_{k=1}^n f_k(x)$$
+converges pointwise or uniformly. For $f = \lim S_n$ we write $\sum^\infty f_n(x)=f$  
+\paragraph{Sentences}
+\begin{enumerate}
+	\item $\sum f_n$ converges uniformly to $f$ on $I$ and each $f_n$ is continuous, then $f$ is continuous
+	\item Dini: $f_n \geq 0$ and continuous on $[a,b]$ such that $\sum f_n = f$ pointwise and $f$ is continuous, then $f_n$ converges uniformly.
+	\item $\sum f_n$ uniformly converges to $f$ on $I$ (finite) and $f_n$ integrable on $I$, then $f$ integrable on $I$ and
+	$$\int \sum f_N dx =\int f dx = \sum \int  f_n dx$$
+	\item $f_n$ continuously derivable on $I$ (finite) and $\exists x_0$ such that $\sum f_n(x_0)$ converges and $\sum f_n^\prime $ uniformly converges on $I$, then
+	$$\sum f^\prime_n = \left(\sum f_n\right)^\prime$$
+	\item Cauchy: $\sum f_n $ uniformly converges  on $I$ $\iff$ $\forall \epsilon > 0 \exists N \forall m,n > N$
+	$$\forall x \left|\sum_{m+1}^n f_k(x)\right| < \epsilon$$ 
+\end{enumerate}
+\paragraph{Weierstrass theorem}
+Let $\left\{ f_n\right\}$ defined on $A$ and $\exists \left\{M_n\right\} \forall x \left|f_n(x)\right|\leq M_n$ such that $\sum M_n < \infty$, then $\sum f_n$ converges uniformly.
+\subparagraph{Proof}
+Lets show that $$\forall \epsilon > 0 \exists N \forall m,n > N \forall x \left|\sum_{m+1}^n f_k(x)\right| < \epsilon$$
+From convergance of $\sum M_n$  $$\forall \epsilon > 0 \exists N \forall m,n > N \: \left|\sum_{m+1}^n M_k \right| < \epsilon$$
+$$\left|\sum_{m+1}^n f_k(x)\right| \leq \sum_{m+1}^n \left| f_k(x)\right| \leq \sum_{m+1}^n M_k  < \epsilon$$
+\paragraph{Example}
+$$\sum_{n=1}^{\infty} \frac{\sin nx}{n^2}$$
+converges since
+$$\frac{\sin nx}{n^2} \leq \frac{1}{n^2} = M_n$$
+\paragraph{Example}
+$$\sum_{n=1}^{\infty} \frac{1}{n+x^2}$$
+$M_n \geq \frac{1}{n}$ (acquired from $x=0$), and this $M_n$ doesn't converge.
+However, series uniformly converges. Using Leibniz:
+$\sum \frac{(-1)^n}{n+x^2}$ converges. $\frac{1}{n+x^2} \to 0$ for constant $x$. 
+Denote $S_n =  \sum_{n=1}^{\infty} \frac{1}{n+x^2}$. From Leibniz
+$$\left| S(x) - S_n(x) \right| \leq \frac{1}{n+1+x^2} \leq \frac{1}{n+1} \to 0$$
+$$\sup_x \left| S(x) - S_n(x) \right| \leq \frac{1}{n+1} \to 0$$
+i.e $S(x)$ uniformly converges
+\paragraph{Example}
+$$\sum_{n=1}^{\infty} \left(\frac{x^n}{n!}\right)^2$$
+is continuous.
+$$\left| \frac{a_{n+1}}{a_n}\right| = \frac{|x|^2}{(n+1)^2} \to 0$$
+We'd like to show that series converges uniformly to show continuousness, e.g. using Weierstrass. But it wouldn't work, and the series doesn't converge uniformly.
+
+But since continuousness is local property, it's enough to show uniform convergence on each finite interval. In this case, we can use Weierstrass.
